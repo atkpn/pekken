@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
-class User::RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :check_guest, only: [:update, :destroy]
+
+  
 
   protected
 

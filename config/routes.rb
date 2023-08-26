@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   # ユーザー用
   devise_for :users, controllers: {
-    registrations: "user/registrations",
-    sessions: "user/sessions"
+    registrations: "users/registrations",
+    sessions: "users/sessions",
+    passwords: 'users/passwords'
   }
 
-  root to: "user/homes#top"
+  root to: "users/homes#top"
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
+  end
 
-  namespace :user do
+  namespace :users do
 
   end
 
