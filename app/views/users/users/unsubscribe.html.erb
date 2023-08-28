@@ -1,0 +1,14 @@
+<h1>退会確認画面</h1>
+<p>
+  退会すると、すべてのサービスがご利用いただけなくなります。
+  再度ご利用いただく場合には、新規登録のお手続きが必要となります。
+  本当に退会してよろしいですか？
+</p>
+
+<% if current_user.email == 'guest@example.com' %>
+  ゲストアカウントは退会できません。
+  <%= link_to "マイページに戻る", my_page_path(current_user) %>
+<% else %>
+  <%= link_to "退会する", user_withdraw_path, method: :patch, data: {confirm: "本当に退会しますか？"} %>
+  <%= link_to "退会しない", my_page_path(current_user) %>
+<% end %>

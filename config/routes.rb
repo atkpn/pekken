@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :users do
+    get 'pets/new'
+    get 'pets/show'
+    get 'pets/edit'
+    get 'pets/index'
+  end
   # ユーザー用
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -11,8 +17,12 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
   end
 
-  namespace :users do
-
+  scope module: :users do
+    get '/my_page' => 'users#show', as: :my_page
+    get '/infomation/edit' => 'users#edit', as: :user_edit
+    patch '/infomation' => 'users#update', as: :user_update
+    get '/unsubscribe' => 'users#unsubscribe', as: :user_unsubscribe
+    patch '/withdraw' => 'users#withdraw', as: :user_withdraw
   end
 
   # 管理者用
