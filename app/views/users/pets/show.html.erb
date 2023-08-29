@@ -1,2 +1,12 @@
-<h1>Users::Pets#show</h1>
-<p>Find me in app/views/users/pets/show.html.erb</p>
+<h1><%= @pet.name %>の詳細画面</h1>
+
+<!--<= image_tag @pet.pet_image %>-->
+
+<p><strong>名前:</strong> <%= @pet.name %></p>
+<p><strong>種類:</strong> <%= @pet.kind %></p>
+<p><strong>誕生日:</strong> <%= l @pet.birthday, format: :day %></p>
+<p><strong>うちに来た日:</strong> <%= l @pet.came_day, format: :day %></p>
+<p><strong>性別:</strong> <%= @pet.sex_i18n %></p>
+<p><strong>メモ:</strong> <%= @pet.memo %></p>
+
+<!--<= link_to '一覧に戻る', user_pets_path %>-->
