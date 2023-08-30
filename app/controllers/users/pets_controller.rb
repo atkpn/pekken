@@ -24,9 +24,10 @@ class Users::PetsController < ApplicationController
     redirect_to pet_path(pet.id)
   end
 
-
-
   def destroy
+    pet = Pet.find(params[:id])
+    pet.destroy
+    redirect_to my_page_path
   end
 
   private

@@ -9,5 +9,6 @@
 <p><strong>性別:</strong> <%= @pet.sex_i18n %></p>
 <p><strong>メモ:</strong> <%= @pet.memo %></p>
 
-<%= link_to '編集する', edit_pet_path(@pet.id) %>
+<%= link_to '編集', edit_pet_path(@pet.id) %>
+<%= link_to '削除', pet_path(@pet.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <%= link_to 'マイページに戻る', my_page_path %>
