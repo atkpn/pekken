@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     patch '/infomation' => 'users#update', as: :user_update
     get '/unsubscribe' => 'users#unsubscribe', as: :user_unsubscribe
     patch '/withdraw' => 'users#withdraw', as: :user_withdraw
-    resources :pets
+    resources :pets, :except => :index
   end
 
   # 管理者用

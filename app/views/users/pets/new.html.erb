@@ -1,8 +1,8 @@
 <h1>ペット登録画面</h1>
 
 <%= form_with model: @pet do |f| %>
-  <%= f.label :image, "画像" %>
-  <%= f.file_field :image, accept: "image/*" %><br>
+  <%= f.label :pet_image, "画像" %>
+  <%= f.file_field :pet_image, accept: "image/*" %><br>
 
   <%= f.label :name, "名前" %>
   <%= f.text_field :name %><br>

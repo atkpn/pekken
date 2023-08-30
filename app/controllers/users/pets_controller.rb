@@ -4,10 +4,10 @@ class Users::PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(pet_params)
-    @pet.user_id = current_user.id
-    @pet.save
-    redirect_to pet_path(@pet)
+    pet = Pet.new(pet_params)
+    pet.user_id = current_user.id
+    pet.save
+    redirect_to pet_path(pet.id)
   end
 
   def show
@@ -15,13 +15,16 @@ class Users::PetsController < ApplicationController
   end
 
   def edit
+    @pet = Pet.find(params[:id])
   end
 
   def update
+    pet = Pet.find(params[:id])
+    pet.update(pet_params)
+    redirect_to pet_path(pet.id)
   end
 
-  def index
-  end
+
 
   def destroy
   end
@@ -29,7 +32,7 @@ class Users::PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :birthday, :came_day, :kind, :sex, :memo)
+    params.require(:pet).permit(:name, :birthday, :came_day, :kind, :sex, :memo, :pet_image)
   end
 
 end

@@ -1,6 +1,6 @@
 <h1><%= @pet.name %>の詳細画面</h1>
 
-<!--<= image_tag @pet.pet_image %>-->
+<%= image_tag @pet.get_pet_image(200,200) %>
 
 <p><strong>名前:</strong> <%= @pet.name %></p>
 <p><strong>種類:</strong> <%= @pet.kind %></p>
@@ -9,4 +9,5 @@
 <p><strong>性別:</strong> <%= @pet.sex_i18n %></p>
 <p><strong>メモ:</strong> <%= @pet.memo %></p>
 
-<!--<= link_to '一覧に戻る', user_pets_path %>-->
+<%= link_to '編集する', edit_pet_path(@pet.id) %>
+<%= link_to 'マイページに戻る', my_page_path %>

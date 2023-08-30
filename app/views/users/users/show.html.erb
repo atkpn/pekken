@@ -4,3 +4,13 @@
 <p>メールアドレス： <%= current_user.email %></p>
 
 <%= link_to "ユーザー情報編集", user_edit_path %>
+
+<h3>ペット一覧</h3>
+<div>
+  <% @pets.each do |pet| %>
+    <%= link_to pet_path(pet.id) do %>
+      <%= image_tag pet.get_pet_image(100,100) %>
+      <p><strong>名前:</strong> <%= pet.name %></p>
+    <% end %>
+  <% end %>
+</div>
