@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :users do
+    get 'body_info/new'
+  end
+  namespace :users do
     get 'pets/new'
     get 'pets/show'
     get 'pets/edit'
@@ -18,12 +21,14 @@ Rails.application.routes.draw do
   end
 
   scope module: :users do
+    resources :pets, :except => :index do
+      resources :body_infos
+    end
     get '/my_page' => 'users#show', as: :my_page
     get '/infomation/edit' => 'users#edit', as: :user_edit
     patch '/infomation' => 'users#update', as: :user_update
     get '/unsubscribe' => 'users#unsubscribe', as: :user_unsubscribe
     patch '/withdraw' => 'users#withdraw', as: :user_withdraw
-    resources :pets, :except => :index
   end
 
   # 管理者用

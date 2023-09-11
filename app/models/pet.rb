@@ -12,5 +12,6 @@ class Pet < ApplicationRecord
 
   # アソシエーション
   belongs_to :user
+  has_many :body_infos, dependent: :destroy
 
 end

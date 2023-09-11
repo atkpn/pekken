@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_29_114558) do
+ActiveRecord::Schema.define(version: 2023_09_02_021832) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,8 +52,17 @@ ActiveRecord::Schema.define(version: 2023_08_29_114558) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "body_infos", force: :cascade do |t|
+    t.integer "pet_id", null: false
+    t.float "length"
+    t.float "weight"
+    t.string "memo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pets", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "birthday"
     t.datetime "came_day"
     t.string "kind"
@@ -71,7 +80,7 @@ ActiveRecord::Schema.define(version: 2023_08_29_114558) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_deleted", default: false

@@ -1,0 +1,36 @@
+<h1><%= @pet.name %>の体重・身長登録画面</h1>
+
+<%= form_with model: @body_info, url: pet_body_infos_path, method: :post do |f| %>
+  <%= f.label :length, "全長" %>
+  <%= f.number_field :length, step: "0.1" %> cm<br>
+
+  <%= f.label :weight, "体重" %>
+  <%= f.number_field :weight, step: "0.1" %> kg<br>
+
+  <%= f.label :memo, "メモ" %>
+  <%= f.text_area :memo %><br>
+
+  <%= f.submit "保存" %>
+<% end %>
+
+<h2>体重・全長の一覧</h2>
+<table>
+  <tr>
+    <th>日付</th>
+    <th>体重(kg)</th>
+    <th>全長(cm)</th>
+    <th>メモ</th>
+  </tr>
+  <% @body_info_all.each do |body_info_all| %>
+  <tr>
+    <td><%= l body_info_all.created_at, format: :long %></td>
+    <td><%= body_info_all.weight %></td>
+    <td><%= body_info_all.length %></td>
+    <td><%= body_info_all.memo %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to pet_path(@pet.id) do %>
+  <%= @pet.name %>の詳細画面に戻る
+<% end %>

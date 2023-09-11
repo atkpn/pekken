@@ -1,7 +1,7 @@
 class CreatePets < ActiveRecord::Migration[6.1]
   def change
     create_table :pets do |t|
-      t.string :name
+      t.string :name, null: false
       t.datetime :birthday
       t.datetime :came_day
       t.string :kind
