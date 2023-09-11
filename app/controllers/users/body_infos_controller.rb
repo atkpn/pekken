@@ -3,17 +3,33 @@ class Users::BodyInfosController < ApplicationController
 
   def new
     @body_info = BodyInfo.new
-    @body_info_all = BodyInfo.all
+    @body_info_all = BodyInfo.where(pet_id: @pet.id).order(created_at: :desc)
   end
 
   def create
     body_info = BodyInfo.new(body_info_params)
     body_info.pet = @pet
     if body_info.save
-      redirect_to new_pet_body_info, notice: "体重と全長が記録されました。"
+      redirect_to new_pet_body_info_path(@pet), notice: "体重と全長が記録されました。"
     else
       render :new
     end
+  end
+
+  def edit
+    @body_info = BodyInfo.find(params[:id])
+  end
+
+  def update
+    body_info = BodyInfo.find(params[:id])
+    body_info.update(body_info_params)
+    redirect_to new_pet_body_info_path(@pet)
+  end
+
+  def destroy
+    body_info = BodyInfo.find(params[:id])
+    body_info.destroy
+    redirect_to new_pet_body_info_path(@pet)
   end
 
   private

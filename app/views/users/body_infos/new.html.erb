@@ -20,13 +20,17 @@
     <th>体重(kg)</th>
     <th>全長(cm)</th>
     <th>メモ</th>
+    <th></th>
+    <th></th>
   </tr>
   <% @body_info_all.each do |body_info_all| %>
   <tr>
-    <td><%= l body_info_all.created_at, format: :long %></td>
+    <td><%= l body_info_all.updated_at, format: :long %></td>
     <td><%= body_info_all.weight %></td>
     <td><%= body_info_all.length %></td>
     <td><%= body_info_all.memo %></td>
+    <td><%= link_to "修正", edit_pet_body_info_path(@pet, body_info_all) %></td>
+    <td><%= link_to "削除", pet_body_info_path(@pet, body_info_all), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
   </tr>
   <% end %>
 </table>
