@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   scope module: :users do
     resources :pets, :except => :index do
       resources :body_infos
+      resources :feeds
+      resources :meals, only: [:new, :create, :edit, :update, :destroy]
     end
     get '/my_page' => 'users#show', as: :my_page
     get '/infomation/edit' => 'users#edit', as: :user_edit

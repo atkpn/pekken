@@ -2,10 +2,10 @@
 
 <%= form_with model: @body_info, url: pet_body_infos_path, method: :post do |f| %>
   <%= f.label :length, "全長" %>
-  <%= f.number_field :length, step: "0.1" %> cm<br>
+  <%= f.number_field :length, step: "0.01" %> cm<br>
 
   <%= f.label :weight, "体重" %>
-  <%= f.number_field :weight, step: "0.1" %> kg<br>
+  <%= f.number_field :weight, step: "0.01" %> kg<br>
 
   <%= f.label :memo, "メモ" %>
   <%= f.text_area :memo %><br>

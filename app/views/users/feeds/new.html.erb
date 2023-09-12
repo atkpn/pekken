@@ -1,0 +1,20 @@
+<h1>えさ登録画面</h1>
+
+<%= form_with model: @feed, url: pet_feeds_path, method: :post do |f| %>
+  <%= f.label :feed_name, "名前" %>
+  <%= f.text_field :feed_name %><br>
+
+  <%= f.label :maker, "メーカー" %>
+  <%= f.text_field :maker %><br>
+
+  <%= f.label :classification, "区分" %>
+  <%= f.radio_button :classification, Feed.classifications.key(0) %>
+  <%= f.label :classification_meal, Feed.classifications_i18n[:meal] %><br>
+  <%= f.radio_button :classification, Feed.classifications.key(1) %>
+  <%= f.label :classification_snack, Feed.classifications_i18n[:snack] %><br>
+
+  <p>グラムあたりのカロリー</p>
+  <%= f.number_field :amount %> g あたり <%= f.number_field :calorie, step: "0.1" %> kcal<br>
+
+  <%= f.submit "保存" %>
+<% end %>

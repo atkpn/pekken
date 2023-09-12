@@ -1,0 +1,23 @@
+<h1>えさ一覧</h1>
+
+<h2>ごはん</h2>
+<% if @feed.classification == Feed.classifications_i18n[:meal] %>
+  <table>
+    <tr>
+      <th>名前</th>
+      <th>メーカー</th>
+      <th>区分</th>
+      <th>kcal / g</th>
+    </tr>
+    <% @feeds.each do |feed| %>
+    <tr>
+      <td><%= feed.feed_name %></td>
+      <td><%= feed.maker %></td>
+      <td><%= feed.calorie %> / <%= feed.amount %></td>
+    </tr>
+    <% end %>
+  </table>
+
+<% end %>
+
+<h2>おやつ</h2>

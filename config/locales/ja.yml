@@ -5,6 +5,10 @@ ja:
         male: "おとこのこ"
         female: "おんなのこ"
         not_known: "わからない"
+    feed:
+      classification:
+        meal: "ごはん"
+        snack: "おやつ"
   activerecord:
     errors:
       messages:

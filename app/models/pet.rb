@@ -13,5 +13,7 @@ class Pet < ApplicationRecord
   # アソシエーション
   belongs_to :user
   has_many :body_infos, dependent: :destroy
+  has_many :meals, dependent: :destroy
+  has_many :feeds, through: :meals
 
 end
