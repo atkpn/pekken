@@ -21,16 +21,16 @@ Rails.application.routes.draw do
   end
 
   scope module: :users do
-    resources :pets, :except => :index do
-      resources :body_infos
-      resources :feeds
-      resources :meals, only: [:new, :create, :edit, :update, :destroy]
-    end
     get '/my_page' => 'users#show', as: :my_page
     get '/infomation/edit' => 'users#edit', as: :user_edit
     patch '/infomation' => 'users#update', as: :user_update
     get '/unsubscribe' => 'users#unsubscribe', as: :user_unsubscribe
     patch '/withdraw' => 'users#withdraw', as: :user_withdraw
+    resources :pets, :except => :index do
+      resources :body_infos, only: [:new, :create, :edit, :update, :destroy]
+      resources :meals
+    end
+    resources :feeds, only: [:new, :create, :index, :edit, :update, :destroy]
   end
 
   # 管理者用

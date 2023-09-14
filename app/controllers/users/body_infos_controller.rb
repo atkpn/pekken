@@ -19,13 +19,13 @@ class Users::BodyInfosController < ApplicationController
   def edit
     @body_info = BodyInfo.find(params[:id])
   end
-
+  
   def update
     body_info = BodyInfo.find(params[:id])
     body_info.update(body_info_params)
     redirect_to new_pet_body_info_path(@pet)
   end
-
+  
   def destroy
     body_info = BodyInfo.find(params[:id])
     body_info.destroy

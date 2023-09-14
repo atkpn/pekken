@@ -1,23 +1,48 @@
 <h1>えさ一覧</h1>
 
+<%= link_to "登録する", new_feed_path %>
+
 <h2>ごはん</h2>
-<% if @feed.classification == Feed.classifications_i18n[:meal] %>
   <table>
     <tr>
       <th>名前</th>
       <th>メーカー</th>
-      <th>区分</th>
       <th>kcal / g</th>
+      <th></th>
+      <th></th>
     </tr>
     <% @feeds.each do |feed| %>
-    <tr>
-      <td><%= feed.feed_name %></td>
-      <td><%= feed.maker %></td>
-      <td><%= feed.calorie %> / <%= feed.amount %></td>
-    </tr>
+      <% if feed.classification == 'meal' %>
+        <tr>
+          <td><%= feed.feed_name %></td>
+          <td><%= feed.maker %></td>
+          <td><%= feed.calorie %> kcal/ <%= feed.amount %> g</td>
+          <td><%= link_to "編集", edit_feed_path(feed.id) %></td>
+          <td><%= link_to "削除", feed_path(feed.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        </tr>
+      <% end %>
     <% end %>
   </table>
 
-<% end %>
-
 <h2>おやつ</h2>
+<table>
+    <tr>
+      <th>名前</th>
+      <th>メーカー</th>
+      <th>kcal / g</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @feeds.each do |feed| %>
+      <% if feed.classification == 'snack' %>
+        <tr>
+          <td><%= feed.feed_name %></td>
+          <td><%= feed.maker %></td>
+          <td><%= feed.calorie %> kcal/ <%= feed.amount %> g</td>
+          <td><%= link_to "編集", edit_feed_path(feed.id) %></td>
+          <td><%= link_to "削除", feed_path(feed.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+

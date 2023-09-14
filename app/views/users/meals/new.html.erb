@@ -1,0 +1,10 @@
+<h1><%= @pet.name %>の食事登録</h1>
+
+<%= form_with model: @meal, url: pet_meals_path, method: :post do |f| %>
+  <%= f.select :feed_id, options_from_collection_for_select(Feed.all, :id, :feed_name) %>
+
+  <%= f.label :amount_eaten, "食べた量" %>
+  <%= f.number_field :amount_eaten, step: "0.1" %> g<br>
+
+  <%= f.submit "保存" %>
+<% end %>
