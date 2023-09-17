@@ -1,6 +1,9 @@
 <h1><%= @pet.name %>の食事登録</h1>
 
 <%= form_with model: @meal, url: pet_meals_path, method: :post do |f| %>
+  <%= f.label :datetime, "日時" %>
+  <%= f.datetime_field :datetime %><br>
+
   <%= f.select :feed_id, options_from_collection_for_select(Feed.all, :id, :feed_name) %>
 
   <%= f.label :amount_eaten, "食べた量" %>

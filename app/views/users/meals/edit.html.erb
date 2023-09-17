@@ -1,1 +1,13 @@
-edit_meal
+<h1><%= @pet.name %>の食事編集</h1>
+
+<%= form_with model: @meal, url: pet_meal_path, method: :patch do |f| %>
+  <%= f.label :datetime, "日時" %>
+  <%= f.datetime_field :datetime %><br>
+
+  <%= f.select :feed_id, options_from_collection_for_select(Feed.all, :id, :feed_name) %>
+
+  <%= f.label :amount_eaten, "食べた量" %>
+  <%= f.number_field :amount_eaten, step: "0.1" %> g<br>
+
+  <%= f.submit "保存" %>
+<% end %>

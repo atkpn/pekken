@@ -1,1 +1,22 @@
-show_meal
+<h1><%= @pet.name %>の食事管理一覧</h1>
+
+<table>
+  <tr>
+    <th>日時</th>
+    <th>食べたもの(kcal)</th>
+    <th>区分</th>
+    <th>カロリー</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @meals.each do |meal| %>
+  <tr>
+    <td><%= l meal.datetime, format: :long %></td>
+    <td><%= meal.feed.feed_name %></td>
+    <td><%= meal.feed.classification_i18n %></td>
+    <td><%= meal.calorie_intake %> kcal</td>
+    <td><%= link_to "編集", edit_pet_meal_path(meal.pet, meal.id) %></td>
+    <td><%= link_to "削除", pet_meal_path(meal.pet, meal.id), method: :delete %></td>
+  </tr>
+  <% end %>
+</table>

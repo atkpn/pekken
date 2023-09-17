@@ -1,20 +1,23 @@
 <h1><%= @pet.name %>の食事管理一覧</h1>
 
+<%= link_to "新規記録", new_pet_meal_path(@pet) %>
+
 <table>
   <tr>
-    <th>日付</th>
-    <th>時間</th>
-    <th>食べたもの(kcal)</th>
-    <th>区分</th>
-    <th>総カロリー</th>
+    <th>日時</th>
+    <th>総摂取カロリー(kcal)</th>
   </tr>
   <% @meals.each do |meal| %>
   <tr>
-    <td><%= l meal.created_at, format: :day %></td>
-    <td><%= l meal.created_at, format: :time %></td>
-    <td><%= meal.feed.feed_name %></td>
-    <td><%= meal.feed.classification_i18n %></td>
-    <td>⭐️あとで計算する⭐️</td>
+    <td>
+      <%= link_to pet_meal_path(@pet, meal.datetime) do %>
+        <%= meal.datetime.strftime('%Y/%m/%d') %>
+      <% end %>
+    </td>
+    <td>
+      <%= meal.calorie %>kcal
+    </td>
+
   </tr>
   <% end %>
 </table>
