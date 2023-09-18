@@ -14,7 +14,11 @@
     <td><%= l meal.datetime, format: :long %></td>
     <td><%= meal.feed.feed_name %></td>
     <td><%= meal.feed.classification_i18n %></td>
-    <td><%= meal.calorie_intake %> kcal</td>
+    <td>
+      <% if (meal.feed.amount && meal.feed.calorie).present? %>
+        <%= meal.calorie_intake %> kcal
+      <% end %>
+    </td>
     <td><%= link_to "編集", edit_pet_meal_path(meal.pet, meal.id) %></td>
     <td><%= link_to "削除", pet_meal_path(meal.pet, meal.id), method: :delete %></td>
   </tr>

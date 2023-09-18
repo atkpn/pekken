@@ -12,22 +12,24 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
-        <li><%= link_to "My Page", my_page_path %></li>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-        <li>
-          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-        </li>
-      <% end %>
+      <ul>
+        <!-- 管理者サインイン後 -->
+        <% if admin_signed_in? %>
+          <li><%= link_to "ユーザー一覧", admin_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+
+        <!-- ユーザーサインイン後 -->
+        <% elsif user_signed_in? %>
+          <li><%= link_to "My Page", my_page_path %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+
+        <!-- サインイン前 -->
+        <% else %>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+          <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
+        <% end %>
+      </ul>
     </header>
     <%= yield %>
   </body>

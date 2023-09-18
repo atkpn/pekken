@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'users/show'
+    get 'users/edit'
+  end
   namespace :users do
     get 'body_info/new'
   end
@@ -37,6 +41,14 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+  scope module: :admin do
+    get 'admin' => 'homes#top'
+  end
+
+  namespace :admin do
+    resources :users, only:[:show, :edit, :update]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

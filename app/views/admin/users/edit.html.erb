@@ -1,0 +1,18 @@
+<h1><%= @user.name %> さんの編集画面</h1>
+
+<%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+  <%= f.label:name, "ユーザー名" %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :email, "メールアドレス" %>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email" %><br>
+
+  <%= f.label:is_deleted, "ステータス" %>
+  <%= f.radio_button :is_deleted, 'false' %>
+  <%= f.label :is_deleted_false, "有効" %>
+
+  <%= f.radio_button :is_deleted, 'true' %>
+  <%= f.label :is_deleted_true, "退会" %><br>
+
+  <%= f.submit "変更を保存" %>
+<% end %>
