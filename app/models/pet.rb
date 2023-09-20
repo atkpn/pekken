@@ -15,5 +15,7 @@ class Pet < ApplicationRecord
   has_many :body_infos, dependent: :destroy
   has_many :meals, dependent: :destroy
   has_many :feeds, through: :meals
+  has_many :pet_cares, dependent: :destroy
+  has_many :cares, through: :pet_cares
 
 end

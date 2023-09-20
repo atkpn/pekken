@@ -10,3 +10,22 @@ Admin.create!(
   email: "krni.ot.112@gmail.com",
   password: "admin_pekken"
 )
+
+Care.create!(
+  [
+    {name: "爪切り"},
+    {name: "耳掃除"},
+    {name: "歯磨き"},
+    {name: "お風呂"},
+    {name: "ブラッシング"},
+    {name: "トリミング"},
+    {name: "お掃除"},
+    {name: "嘔吐"},
+    {name: "体調不良"},
+    {name: "ワクチン"},
+    {name: "トイレ"},
+    {name: "運動・散歩"},
+    {name: "体温"},
+    {name: "薬"},
+  ]
+)

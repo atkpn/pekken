@@ -1,17 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :users do
-    get 'body_info/new'
-  end
-  namespace :users do
-    get 'pets/new'
-    get 'pets/show'
-    get 'pets/edit'
-    get 'pets/index'
-  end
   # ユーザー用
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -33,6 +20,8 @@ Rails.application.routes.draw do
     resources :pets, :except => :index do
       resources :body_infos, only: [:new, :create, :edit, :update, :destroy]
       resources :meals
+      resources :pet_cares
+      resources :cares
     end
     resources :feeds, only: [:new, :create, :index, :edit, :update, :destroy]
   end

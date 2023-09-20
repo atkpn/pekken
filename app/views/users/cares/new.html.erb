@@ -1,0 +1,8 @@
+<h1>記録項目追加</h1>
+
+<%= form_with model: @care, url: pet_cares_path, method: :post do |f| %>
+  <%= f.label :name, "項目名" %>
+  <%= f.text_field :name %><br>
+
+  <%= f.submit "保存" %>
+<% end %>

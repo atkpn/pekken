@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_11_090822) do
+ActiveRecord::Schema.define(version: 2023_09_20_120942) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(version: 2023_09_11_090822) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cares", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "feeds", force: :cascade do |t|
     t.string "feed_name", null: false
     t.string "maker"
@@ -76,6 +82,15 @@ ActiveRecord::Schema.define(version: 2023_09_11_090822) do
     t.integer "feed_id", null: false
     t.float "amount_eaten", null: false
     t.datetime "datetime", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pet_cares", force: :cascade do |t|
+    t.integer "pet_id", null: false
+    t.integer "care_id", null: false
+    t.string "memo"
+    t.datetime "date_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
