@@ -1,8 +1,23 @@
 <h1>記録項目追加</h1>
 
-<%= form_with model: @care, url: pet_cares_path, method: :post do |f| %>
+<%= form_with model: @care, url: cares_path, method: :post do |f| %>
+  <!-- デフォルトから選択 -->
+  <%= f.radio_button :select_option, 1 %>
+  <%= f.label :select_option_1, "デフォルトから選択" %>
+  <%= f.select :name, options_from_collection_for_select(DefaultItem.all, :id, :name), include_blank: "選択してください" %><br>
+
+  <!-- 自分のテンプレートから選択 -->
+  <%= f.radio_button :select_option, 2 %>
+  <%= f.label :select_option_2, "自分のテンプレートから選択" %>
+  <%= f.select :name, options_from_collection_for_select(DefaultItem.all, :id, :name), include_blank: "選択してください" %><br>
+
+  <!-- 新規登録 -->
+  <%#= f.radio_button :プロパティ名, "フォームで送る値" %>
   <%= f.label :name, "項目名" %>
   <%= f.text_field :name %><br>
+
+  <%= f.label :unit, "単位" %>
+  <%= f.text_field :unit %>
 
   <%= f.submit "保存" %>
 <% end %>

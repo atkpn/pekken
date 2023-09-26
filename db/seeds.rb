@@ -6,12 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.destroy_all
 Admin.create!(
   email: "krni.ot.112@gmail.com",
   password: "admin_pekken"
 )
 
-Care.create!(
+DefaultItem.create!(
   [
     {name: "爪切り"},
     {name: "耳掃除"},
@@ -24,8 +25,8 @@ Care.create!(
     {name: "体調不良"},
     {name: "ワクチン"},
     {name: "トイレ"},
-    {name: "運動・散歩"},
-    {name: "体温"},
+    {name: "運動・散歩", unit: "時間"},
+    {name: "体温", unit: "℃"},
     {name: "薬"},
   ]
 )

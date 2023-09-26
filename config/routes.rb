@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # ユーザー用
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -21,9 +22,9 @@ Rails.application.routes.draw do
       resources :body_infos, only: [:new, :create, :edit, :update, :destroy]
       resources :meals
       resources :pet_cares
-      resources :cares
     end
     resources :feeds, only: [:new, :create, :index, :edit, :update, :destroy]
+    resources :cares
   end
 
   # 管理者用
