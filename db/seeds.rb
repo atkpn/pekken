@@ -12,21 +12,22 @@ Admin.create!(
   password: "admin_pekken"
 )
 
-DefaultItem.create!(
+CareItem.destroy_all
+CareItem.create!(
   [
-    {name: "爪切り"},
-    {name: "耳掃除"},
-    {name: "歯磨き"},
-    {name: "お風呂"},
-    {name: "ブラッシング"},
-    {name: "トリミング"},
-    {name: "お掃除"},
-    {name: "嘔吐"},
-    {name: "体調不良"},
-    {name: "ワクチン"},
-    {name: "トイレ"},
-    {name: "運動・散歩", unit: "時間"},
-    {name: "体温", unit: "℃"},
-    {name: "薬"},
+    {name: "爪切り", default_item: true},
+    {name: "耳掃除", default_item: true},
+    {name: "歯磨き", default_item: true},
+    {name: "お風呂", default_item: true},
+    {name: "ブラッシング", default_item: true},
+    {name: "トリミング", default_item: true},
+    {name: "お掃除", default_item: true},
+    {name: "嘔吐", default_item: true},
+    {name: "体調不良", default_item: true},
+    {name: "ワクチン", default_item: true},
+    {name: "トイレ", default_item: true},
+    {name: "運動・散歩", unit: "時間", default_item: true},
+    {name: "体温", unit: "℃", default_item: true},
+    {name: "薬", default_item: true},
   ]
 )

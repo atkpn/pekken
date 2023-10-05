@@ -1,0 +1,23 @@
+<h1><%= @pet.name %>のお手入れ項目一覧</h1>
+
+<table>
+  <tr>
+    <th>項目名</th>
+    <th>単位</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @care_items.each do |care_item| %>
+  <tr>
+    <td><%= care_item.name %></td>
+    <td><%= care_item.unit %></td>
+    <td><%= link_to "記録", new_pet_care_pet_care_path(pet_id: @pet.id, care_id: care_item.id)%></td>
+    <td><%= link_to "削除", pet_care_path(pet_id: @pet.id, id: care_item.id), method: :delete, "data-confirm" => "項目を削除すると記録が消えてしまう場合があります。\n本当に削除しますか？" %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+<div>
+  <%= link_to "項目を追加する", new_pet_care_path(pet_id: @pet.id) %>
+</div>

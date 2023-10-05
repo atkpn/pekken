@@ -1,0 +1,25 @@
+<h1><%= @pet.name %>のお手入れ項目一覧</h1>
+
+<table>
+  <tr>
+    <th>項目名</th>
+    <th>単位</th>
+    <th></th>
+  </tr>
+  <% @care_items.each do |care_item| %>
+  <tr>
+    <td>
+      <%#= link_to edit_care_item_path(care_item.id) do %>
+        <%= care_item.name %>
+      <%# end %>
+    </td>
+    <td><%= care_item.unit %></td>
+    <td><%= link_to "削除", care_path(.id)</td>
+  </tr>
+  <% end %>
+</table>
+
+
+<div>
+  <%= link_to "項目を追加する", new_care_path(pet_id: @pet.id) %>
+</div>

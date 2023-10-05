@@ -1,0 +1,21 @@
+<h1>項目の編集画面</h1>
+
+<!-- 自分で追加した項目の場合 -->
+<% if @care_item.default_item == false %>
+  <%= form_with model: @care_item, url: care_item_path(@care_item.id), method: :patch do |f| %>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :unit, "単位" %>
+    <%= f.text_field :unit %><br>
+
+    <%= f.hidden_field :default_item, :value => false %>
+
+    <%= f.submit "保存" %>
+  <% end %>
+
+<!-- デフォルトの項目の場合 -->
+<% else %>
+  <p>デフォルトの項目は編集できません。</p>
+
+<% end %>
