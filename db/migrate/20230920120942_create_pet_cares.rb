@@ -3,7 +3,7 @@ class CreatePetCares < ActiveRecord::Migration[6.1]
     create_table :pet_cares do |t|
       t.integer :pet_id, null: false
       t.integer :care_id, null: false
-      t.float :value
+      t.string :value
       t.string :memo
       t.datetime :date_time, null: false
 

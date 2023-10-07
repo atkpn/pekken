@@ -6,10 +6,30 @@ class Users::PetCaresController < ApplicationController
     @pet_care = PetCare.new
   end
 
-  def edit
+  def create
+    pet_care = PetCare.new(pet_care_params)
+    pet_care.save
+    redirect_to pet_care_pet_cares_path(pet_id: @pet.id, care_id: @care.id)
   end
 
-  def show
+  def index
+    @pet_care = PetCare.where(pet_id: @pet.id, care_id: @care.id)
+  end
+
+  def edit
+    @pet_care = PetCare.find(params[:id])
+  end
+
+  def update
+    pet_care = PetCare.find(params[:id])
+    pet_care.update(pet_care_params)
+    redirect_to pet_care_pet_cares_path(pet_id: @pet.id, care_id: @care.id)
+  end
+
+  def destroy
+    pet_care = PetCare.find(params[:id])
+    pet_care.destroy
+    redirect_to request.referer #削除後もリダイレクト先は記録一覧ページのまま
   end
 
   private
@@ -19,7 +39,7 @@ class Users::PetCaresController < ApplicationController
   end
 
   def set_care
-    @care = Care.find_by(pet_id: params[:pet_id], care_item_id: params[:id])
+    @care = Care.find(params[:care_id])
   end
 
   def pet_care_params

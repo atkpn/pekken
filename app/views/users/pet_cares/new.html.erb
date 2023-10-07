@@ -1,2 +1,17 @@
-<h1><%= @pet.name %>の<%= @care.care_item.name %>記録</h1>
-<p>Find me in app/views/users/pet_cares/new.html.erb</p>
+<h1><%= @pet.name %>の<%= @care.care_item.name %>の記録登録</h1>
+
+<%= form_with model: @pet_care, url: pet_care_pet_cares_path(pet_id: @pet.id, care_id: @care.id), method: :post do |f| %>
+  <%= f.hidden_field :pet_id, :value => @pet.id %>
+  <%= f.hidden_field :care_id, :value => @care.id %>
+
+  <%= f.label :date_time, "日時" %>
+  <%= f.datetime_field :date_time %><br>
+
+  <%= f.label :value, "値" %>
+  <%= f.text_field :value %><br>
+
+  <%= f.label :memo, "メモ" %>
+  <%= f.text_area :memo %><br>
+
+  <%= f.submit "保存" %>
+<% end %>

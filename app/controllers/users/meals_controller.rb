@@ -3,6 +3,7 @@ class Users::MealsController < ApplicationController
 
   def new
     @meal = Meal.new
+    @feeds = Feed.all
   end
 
   def create

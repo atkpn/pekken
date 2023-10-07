@@ -3,7 +3,6 @@
 <h2><strong>記録する項目を選んでください</strong></h2>
 <%# binding.pry %>
 <%= form_with model: @care, url: pet_cares_path(@pet.id), method: :post do |f| %>
-  <%#= f.hidden_field :pet_id, :value => @pet.id %>
 
   <!-- デフォルトから選択 -->
   <strong><%= f.label :default_item_id, "デフォルトから選択" %></strong><br>

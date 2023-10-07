@@ -1,13 +1,17 @@
 <h1><%= @pet.name %>の食事登録</h1>
 
 <%= form_with model: @meal, url: pet_meals_path, method: :post do |f| %>
-  <%= f.label :datetime, "日時" %>
-  <%= f.datetime_field :datetime %><br>
+  <% if @feeds.present? %>
+    <%= f.label :datetime, "日時" %>
+    <%= f.datetime_field :datetime %><br>
 
-  <%= f.select :feed_id, options_from_collection_for_select(Feed.all, :id, :feed_name) %>
+    <%= f.select :feed_id, options_from_collection_for_select(@feeds, :id, :feed_name) %>
 
-  <%= f.label :amount_eaten, "食べた量" %>
-  <%= f.number_field :amount_eaten, step: "0.1" %> g<br>
+    <%= f.label :amount_eaten, "食べた量" %>
+    <%= f.number_field :amount_eaten, step: "0.1" %> g<br>
 
-  <%= f.submit "保存" %>
+    <%= f.submit "保存" %>
+  <% else %>
+    <p>先に<%= link_to "えさの登録", new_feed_path %>をしてください</p>
+  <% end %>
 <% end %>

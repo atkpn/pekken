@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :body_infos, only: [:new, :create, :edit, :update, :destroy]
       resources :meals
       resources :cares, only:[:new, :create, :index, :destroy] do
-        resources :pet_cares, only:[:new, :create, :edit, :update, :destroy]
+        resources :pet_cares
       end
     end
     resources :feeds, only: [:new, :create, :index, :edit, :update, :destroy]
