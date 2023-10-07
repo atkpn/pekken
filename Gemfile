@@ -57,3 +57,13 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'enum_help'
+
+# LINE log_in
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
+
+# LINE Messaging API
+gem 'line-bot-api'
+
+# 環境変数
+gem 'dotenv-rails'

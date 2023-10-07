@@ -75,4 +75,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.hosts << "f02fbd8dfa5c43c9a9fb853463b0427a.vfs.cloud9.ap-northeast-1.amazonaws.com"
+
+  # ngrok
+  config.hosts << "de81-18-181-110-189.ngrok-free.app"
 end
