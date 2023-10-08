@@ -5,7 +5,7 @@
   <%= f.hidden_field :care_id, :value => @care.id %>
 
   <%= f.label :date_time, "日時" %>
-  <%= f.datetime_field :date_time %><br>
+  <%= f.datetime_select :date_time, {default: Time.zone.now} %><br>
 
   <%= f.label :value, "値" %>
   <%= f.text_field :value %><br>

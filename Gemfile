@@ -67,3 +67,6 @@ gem 'line-bot-api'
 
 # 環境変数
 gem 'dotenv-rails'
+
+# 定時処理
+gem 'whenever', require: false
