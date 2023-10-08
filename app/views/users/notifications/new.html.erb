@@ -1,0 +1,12 @@
+<h1>通知作成画面</h1>
+
+<%= form_with model: @notification, url: notifications_path, method: :post do |f| %>
+
+  <%= f.label :due_date, "通知したい日時" %>
+  <%= f.datetime_field :due_date %><br>
+
+  <%= f.label :task, "通知内容" %>
+  <%= f.text_field :task %><br>
+
+  <%= f.submit "保存" %>
+<% end %>

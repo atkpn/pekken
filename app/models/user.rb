@@ -42,5 +42,6 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :pets, dependent: :destroy
   has_many :care_items, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
 end
