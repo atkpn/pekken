@@ -1,0 +1,12 @@
+<h1>通知の編集画面</h1>
+
+<%= form_with model: @notification, url: notification_path, method: :patch do |f| %>
+
+  <%= f.label :due_date, "通知したい日時" %>
+  <%= f.datetime_select :due_date, {default: Time.zone.now, minute_step: 15} %><br>
+
+  <%= f.label :task, "通知内容" %>
+  <%= f.text_field :task %><br>
+
+  <%= f.submit "保存" %>
+<% end %>

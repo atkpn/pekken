@@ -13,8 +13,8 @@
   <tr>
     <td><%= notification.due_date.strftime('%Y/%m/%d %-H:%M') %></td>
     <td><%= notification.task %></td>
-    <td><%#= link_to %></td>
-    <td><%#= link_to , method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+    <td><%= link_to "編集", edit_notification_path(notification.id) %></td>
+    <td><%= link_to "削除", notification_path(notification.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
   </tr>
   <% end %>
 </table>

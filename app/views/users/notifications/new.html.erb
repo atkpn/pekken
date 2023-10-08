@@ -1,5 +1,14 @@
 <h1>通知作成画面</h1>
 
+<% if @notification.errors.any? %>
+  <%= @notification.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @notification.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @notification, url: notifications_path, method: :post do |f| %>
 
   <%= f.label :due_date, "通知したい日時" %>
