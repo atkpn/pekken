@@ -3,6 +3,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def line
     basic_action
+    update_user_with_line_info if @omniauth.present?
   end
 
   private
@@ -24,6 +25,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def fake_email(uid, provider)
     "#{auth.uid}-#{auth.provider}@example.com"
+  end
+
+  def update_user_with_line_info
+    current_user.update(uid: @omniauth['uid'])
   end
 
   # You should configure your model like this:
