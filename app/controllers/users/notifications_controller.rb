@@ -4,20 +4,22 @@ class Users::NotificationsController < ApplicationController
   end
 
   def create
-    notification = Notification.new(notification_params)
-    notification.user_id = current_user.id
-    notification.user_uid = current_user.uid
-    if notification.user_uid.present?
-      notification.save
-      redirect_to notifications_path
-    else
-      # LINE連携画面にリダイレクトしたい
+    @notification = Notification.new(notification_params)
+    @notification.user_id = current_user.id
+    @notification.user_uid = current_user.uid
+    # LINE連携されていて、かつ、登録する日付が現在時刻より後の場合は、保存できるようにする
+    if @notification.user_uid.present?
+      if @notification.save
+        redirect_to notifications_path
+      else
+        render :new
+      end
     end
   end
 
   def index
     @notifications = Notification.all
-    @notifications = current_user.notifications
+    @notifications = current_user.notifications.order(:due_date)
   end
 
   def edit

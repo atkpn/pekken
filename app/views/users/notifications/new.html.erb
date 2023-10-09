@@ -1,5 +1,15 @@
 <h1>通知作成画面</h1>
 
+<!-- バリデーションエラー -->
+<% if @notification.errors.any? %>
+  <%= @notification.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @notification.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <!-- ユーザーのLINE連携が完了している場合は、フォームを表示 -->
 <% if current_user.uid.present? %>
   <%= form_with model: @notification, url: notifications_path, method: :post do |f| %>
@@ -12,6 +22,7 @@
 
     <%= f.submit "保存" %>
   <% end %>
+<!-- LINE連携が完了していない場合は、連携用リンクを表示 -->
 <% else %>
   <p>通知機能を使用する場合は、先に<%= link_to "LINEアカウントを連携", user_line_omniauth_authorize_path, method: :post %>する必要があります。</p>
 <% end %>
