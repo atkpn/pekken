@@ -5,32 +5,55 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <header>
-      <ul>
-        <!-- 管理者サインイン後 -->
-        <% if admin_signed_in? %>
-          <li><%= link_to "ユーザー一覧", admin_path %></li>
-          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+  <body class="d-flex flex-column vh-100">
+    <header class="main_menu">
+      <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+          <!-- ロゴ -->
+          <h1><a class="navbar-brand p-3 text-white logo" href="/">ぺっけん</a></h1>
 
-        <!-- ユーザーサインイン後 -->
-        <% elsif user_signed_in? %>
-          <li><%= link_to "My Page", my_page_path %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <!-- ハンバーガーメニュー -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- ナビゲーションメニュー -->
+          <div class="navbar-collapse justify-content-center collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <!-- 管理者サインイン後 -->
+              <% if admin_signed_in? %>
+                <li class="nav-item border-bottom border-white"><%= link_to "ユーザー一覧", admin_path, class: 'nav-link text-white' %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %></li>
 
-        <!-- サインイン前 -->
-        <% else %>
-          <li><%= link_to "新規登録", new_user_registration_path %></li>
-          <li><%= link_to "ログイン", new_user_session_path %></li>
-          <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
-        <% end %>
-      </ul>
+              <!-- ユーザーサインイン後 -->
+              <% elsif user_signed_in? %>
+                <li class="nav-item"><%= link_to "My Page", my_page_path, class: 'nav-link text-white' %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %></li>
+
+              <!-- サインイン前 -->
+              <% else %>
+                <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white border-bottom mr-3' %></li>
+                <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white border-bottom mr-3' %></li>
+                <li class="nav-item"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'nav-link text-white border-bottom mr-3' %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
-    <%= yield %>
+
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
   </body>
 </html>

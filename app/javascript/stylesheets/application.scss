@@ -1,0 +1,109 @@
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  color: #524541;
+  font-family: 'Kiwi Maru', serif;
+  font-size: 14px;
+}
+
+.main_menu {
+  background-color: #9a8781;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 5px;
+  text-shadow: -1px -1px 0px #9a8781, 1px 1px 0px #9a8781, 3px 3px 0px #524541;
+  position: relative;
+  border: solid 2px #524541;
+  border-radius: 3px 0 3px 0;
+}
+
+.logo:before,.logo:after {
+    content: '';
+    position: absolute;
+    width:10px;
+    height: 10px;
+    border: solid 2px #524541;
+    border-radius: 50%;
+}
+
+.logo:after {
+    top:-9px;
+    left:-9px;
+}
+
+.logo:before {
+    bottom:-9px;
+    right:-9px;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.banner_part {
+  display: flex;
+  height: 500px;
+  background-color: #fbd2ac;
+  align-items: center;
+  position: relative;
+}
+
+.banner_part::after {
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  width: 100%;
+  height: 130px;
+  background-image: url('../../assets/images/paper_effect.png');
+  background-repeat: no-repeat;
+  background-position: 0px 55%;
+  background-size: cover;
+}
+
+.login_btn {
+  display: flex;
+}
+
+.btn-custom {
+  background: #53C9BB;
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  border-radius: 5px;
+  border-bottom: solid 3px #185e67;
+  height: 55px;
+  width: 130px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-signup {
+  background: #185e67;
+  border-bottom: solid 3px #53C9BB;
+}
+
+.about_part {
+  padding-top: 50px;
+}
+
+.section_title {
+  margin: 10px 0px 50px;
+}
+
+// .btn-pet-new {
+//   background: #185e67;
+//   border-bottom: solid 3px #53C9BB;
+// }
+
+// .card-imag {
+//   object-fit: cover;
+// }

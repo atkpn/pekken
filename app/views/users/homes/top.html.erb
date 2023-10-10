@@ -1,1 +1,70 @@
-トップページ
+<section class="banner_part">
+  <div class="container">
+    <div class="row align-content-center">
+      <div class="col-lg-7">
+        <div class="banner_text">
+          <h2>ずっと一緒にいたいから</h2>
+          <p>
+            大切なペットには健康で長生きしてほしい。<br>
+            そのために、今日から健康・お手入れの管理を始めましょう。<br>
+            このアプリは、ペットの健康・お手入れ記録ツールです。
+          </p>
+        </div>
+        <div class="login_btn">
+          <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-custom btn-signup mr-3' %>
+          <%= link_to "ログイン", new_user_session_path, class: 'btn btn-custom mr-3' %>
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn btn-custom' %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about_part">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="section_title text-center">
+          <h3>ぺっけんでできること</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-6">
+        <div class="about_img">
+          <img src="../../assets/images/no_image_square.jpg" alt="画像の説明">
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="about_text">
+          <h4>健康・お手入れの記録</h4>
+          <p>
+            複数のペットを登録でき、ペットごとに健康・お手入れの記録を残せます。
+            さらに、ペットに合わせてお手入れ項目をカスタマイズもできます。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-6">
+        <div class="about_img">
+          <img src="../../assets/images/no_image_square.jpg" alt="画像の説明">
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="about_text">
+          <h4>通知サポート</h4>
+          <p>
+            通知を設定すれば、LINEでお知らせしてくれます。<br>
+            ※LINEアカウントとの連携が必要です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
