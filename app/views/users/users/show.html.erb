@@ -8,11 +8,11 @@
   </div>
 </div>
 
-<section class="user_info">
+<section class="user_info mb-4">
   <div class="container">
     <div class="row align-items-center justify-content-between">
       <div class="col-md-6">
-        <div class="section_title">
+        <div class="my-page-section_title">
           <h4>ユーザー情報</h4>
         </div>
       </div>
@@ -27,18 +27,18 @@
       </div>
       <div class="col-md-5">
         <div class="ボタン">
-          <%= link_to "ユーザー情報編集", user_edit_path %>
+          <%= link_to "ユーザー情報編集", user_edit_path, class: "btn btn-custom2" %>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pet_info">
+<section class="pet_info mb-4">
   <div class="container">
     <div class="row align-items-center justify-content-between">
       <div class="col-md-6">
-        <div class="section_title">
+        <div class="my-page-section_title">
           <h4>ペット一覧</h4>
           <%= link_to "+ ペット登録", new_pet_path, class: "btn"%>
         </div>
@@ -49,12 +49,30 @@
       <% @pets.each do |pet| %>
       <div class="card w-25 mt-4 shadow-sm">
         <%= link_to pet_path(pet.id) do %>
-          <%= image_tag pet.pet_image, class: "card-img-top" %>
+          <%= image_tag pet.pet_image, class: "card-img-top card-img" %>
         <% end %>
         <div class="card-body">
           <div class="row">
             <div class="col-8">
-              <p class="pet_name">名前: <%= pet.name %></p>
+              <h5 class="card-title"><%= pet.name %></h5>
+              <table class="card-text d-none d-md-block">
+                <tr>
+                  <td>種類：</td>
+                  <td><%= pet.kind %></td>
+                </tr>
+                <tr>
+                  <td>性別：</td>
+                  <td><%= pet.sex_i18n %></td>
+                </tr>
+                <tr>
+                  <td>誕生日：</td>
+                  <td><%= l pet.birthday, format: :day %></td>
+                </tr>
+                <tr>
+                  <td>うちに来た日：</td>
+                  <td><%= l pet.came_day, format: :day %></td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
@@ -63,15 +81,3 @@
     </div>
   </div>
 </section>
-
-<div class="container">
-  <div class="row align-items-center justify-content-between">
-    <div class="col-md-6">
-      <div class="ボタン一覧（仮）">
-
-        <%= link_to "えさ一覧", feeds_path %><br>
-        <%= link_to "通知一覧", notifications_path %>
-      </div>
-    </div>
-  </div>
-</div>

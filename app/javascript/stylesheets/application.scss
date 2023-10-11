@@ -99,11 +99,30 @@ body {
   margin: 10px 0px 50px;
 }
 
-// .btn-pet-new {
-//   background: #185e67;
-//   border-bottom: solid 3px #53C9BB;
-// }
+.my-page-section_title {
+  margin: 10px 0px;
+}
 
-// .card-imag {
-//   object-fit: cover;
-// }
+.btn-custom2 {
+  background: #f4e8d7;
+  border-bottom: solid 3px #fbd2ac;
+}
+
+.card-img {
+  height: 400px;
+  object-fit: contain;
+}
+
+.btn-attention {
+  background: #c17e68;
+  padding: 1px 6px;
+  border: solid 1px #8a5a4a;
+  font-size: inherit;
+}
+
+.btn-simple {
+  background: #53c9bb;
+  padding: 1px 6px;
+  border: solid 1px #185e67;
+  font-size: inherit;
+}

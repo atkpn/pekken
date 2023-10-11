@@ -1,31 +1,53 @@
-<h1>ペット登録画面</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-6">
+      <h2>ペット登録画面</h2>
 
-<%= form_with model: @pet do |f| %>
-  <%= f.label :pet_image, "画像" %>
-  <%= f.file_field :pet_image, accept: "image/*" %><br>
+      <%= form_with model: @pet do |f| %>
+        <div class="field">
+          <%= f.label :pet_image, "画像" %><br>
+          <%= f.file_field :pet_image, accept: "image/*" %>
+        </div>
 
-  <%= f.label :name, "名前" %>
-  <%= f.text_field :name %><br>
+        <div class="field">
+          <%= f.label :name, "名前" %><br>
+          <%= f.text_field :name %>
+        </div>
 
-  <%= f.label :kind, "種類" %>
-  <%= f.text_field :kind %><br>
+        <div class="field">
+          <%= f.label :kind, "種類" %><br>
+          <%= f.text_field :kind %>
+        </div>
 
-  <%= f.label :birthday, "誕生日" %>
-  <%= f.date_field :birthday %><br>
+        <div class="field">
+          <%= f.label :birthday, "誕生日" %><br>
+          <%= f.date_field :birthday %>
+        </div>
 
-  <%= f.label :came_day, "うちに来た日" %>
-  <%= f.date_field :came_day %><br>
+        <div class="field">
+          <%= f.label :came_day, "うちに来た日" %><br>
+          <%= f.date_field :came_day %>
+        </div>
 
-  <%= f.label :sex, "性別" %>
-  <%= f.radio_button :sex, Pet.sexes.key(0) %>
-  <%= f.label :sex_male, Pet.sexes_i18n[:male] %><br>
-  <%= f.radio_button :sex, Pet.sexes.key(1) %>
-  <%= f.label :sex_female, Pet.sexes_i18n[:female] %><br>
-  <%= f.radio_button :sex, Pet.sexes.key(2) %>
-  <%= f.label :sex_not_known, Pet.sexes_i18n[:not_known] %><br>
+        <div class="field">
+          <%= f.label :sex, "性別" %><br>
+          <%= f.radio_button :sex, Pet.sexes.key(0) %>
+          <%= f.label :sex_male, Pet.sexes_i18n[:male] %>
+          <%= f.radio_button :sex, Pet.sexes.key(1) %>
+          <%= f.label :sex_female, Pet.sexes_i18n[:female] %>
+          <%= f.radio_button :sex, Pet.sexes.key(2) %>
+          <%= f.label :sex_not_known, Pet.sexes_i18n[:not_known] %>
+        </div>
 
-  <%= f.label :memo, "メモ" %>
-  <%= f.text_area :memo %><br>
+        <div class="field">
+          <%= f.label :memo, "メモ" %><br>
+          <%= f.text_area :memo %>
+        </div>
 
-  <%= f.submit '登録' %>
-<% end %>
+        <div class="actions mt-3">
+          <%= f.submit '登録' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

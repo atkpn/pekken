@@ -1,14 +1,22 @@
-<h1>退会確認画面</h1>
-<p>
-  退会すると、すべてのサービスがご利用いただけなくなります。
-  再度ご利用いただく場合には、新規登録のお手続きが必要となります。
-  本当に退会してよろしいですか？
-</p>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-10">
+      <h2>退会確認画面</h2>
+      <p>
+        退会すると、すべてのサービスがご利用いただけなくなります。<br>
+        再度ご利用いただく場合には、新規登録のお手続きが必要となります。<br>
+        本当に退会してよろしいですか？
+      </p>
 
-<% if current_user.email == 'guest@example.com' %>
-  ゲストアカウントは退会できません。
-  <%= link_to "マイページに戻る", my_page_path(current_user) %>
-<% else %>
-  <%= link_to "退会する", user_withdraw_path, method: :patch, data: {confirm: "本当に退会しますか？"} %>
-  <%= link_to "退会しない", my_page_path(current_user) %>
-<% end %>
+      <% if current_user.email == 'guest@example.com' %>
+        ゲストアカウントは退会できません。
+        <%= link_to "マイページに戻る", my_page_path(current_user), class: 'btn text-white btn-simple mt-4' %>
+      <% else %>
+        <%= link_to "退会する", user_withdraw_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: 'btn text-white btn-attention mt-4' %>
+        <span class="mr-5"></span>
+        <%= link_to "退会しない", my_page_path(current_user), class: 'btn text-white btn-simple mt-4' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
