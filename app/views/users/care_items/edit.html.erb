@@ -1,21 +1,33 @@
-<h1>項目の編集画面</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-8">
+      <h2>自分のテンプレート編集</h2>
 
-<!-- 自分で追加した項目の場合 -->
-<% if @care_item.default_item == false %>
-  <%= form_with model: @care_item, url: care_item_path(@care_item.id), method: :patch do |f| %>
-    <%= f.label :name, "名前" %>
-    <%= f.text_field :name %><br>
+      <!-- 自分で追加した項目の場合 -->
+      <% if @care_item.default_item == false %>
+        <%= form_with model: @care_item, url: care_item_path(@care_item.id), method: :patch do |f| %>
+          <%= f.hidden_field :default_item, :value => false %>
 
-    <%= f.label :unit, "単位" %>
-    <%= f.text_field :unit %><br>
+          <div class="field">
+            <%= f.label :name, "項目名" %><br>
+            <%= f.text_field :name %>
+          </div>
 
-    <%= f.hidden_field :default_item, :value => false %>
+          <div class="field">
+            <%= f.label :unit, "単位" %><br>
+            <%= f.text_field :unit %>
+          </div>
 
-    <%= f.submit "保存" %>
-  <% end %>
+          <div class="actions mt-3">
+            <%= f.submit "保存" %>
+          </div>
+        <% end %>
 
-<!-- デフォルトの項目の場合 -->
-<% else %>
-  <p>デフォルトの項目は編集できません。</p>
+      <!-- デフォルトの項目の場合 -->
+      <% else %>
+        <p>デフォルトの項目は編集できません。</p>
 
-<% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

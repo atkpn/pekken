@@ -39,6 +39,14 @@
           <% end %>
         </table>
       </div>
+      <div class="col-md-8 btn-pet-show">
+        <%= link_to pet_path(@pet.id), class: 'btn btn-custom2' do %>
+          <%= @pet.name %>の詳細画面に戻る
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
+
+
+

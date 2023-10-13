@@ -24,6 +24,7 @@ class Users::MealsController < ApplicationController
 
   def edit
     @meal = Meal.find(params[:id])
+    @feeds = Feed.all
   end
 
   def update

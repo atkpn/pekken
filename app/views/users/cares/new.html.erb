@@ -1,54 +1,90 @@
-<h1><%= @pet.name %>の記録項目追加</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-8">
+      <div class="page_title">
+        <h2><%= @pet.name %>の記録項目追加</h2>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2><strong>記録する項目を選んでください</strong></h2>
-<%# binding.pry %>
-<%= form_with model: @care, url: pet_cares_path(@pet.id), method: :post do |f| %>
+<!-- お手入れ項目追加フォーム -->
+<section class="mb-5">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-10">
+        <h4>記録する項目を選んでください</h3>
+        <%= form_with model: @care, url: pet_cares_path(@pet.id), method: :post do |f| %>
 
-  <!-- デフォルトから選択 -->
-  <strong><%= f.label :default_item_id, "デフォルトから選択" %></strong><br>
-  <%= f.collection_check_boxes :care_item_id, @default_items, :id, :name %><br>
+          <!-- デフォルトから選択 -->
+          <h5><%= f.label :default_item_id, "デフォルトから選択" %></h4>
+          <%= f.collection_check_boxes :care_item_id, @default_items, :id, :name %><br>
 
-  <!-- 自分のテンプレートから選択 -->
-  <strong><%= f.label :template_item_id, "自分のテンプレートから選択" %></strong><br>
-  <% if @custom_items.present? %>
-    <%= f.collection_check_boxes :care_item_id, @custom_items, :id, :name %><br>
-  <% else %>
-    <p>自分のテンプレートはまだありません。</p>
-  <% end %>
+          <!-- 自分のテンプレートから選択 -->
+          <h5><%= f.label :template_item_id, "自分のテンプレートから選択" %></h5>
+          <% if @custom_items.present? %>
+            <%= f.collection_check_boxes :care_item_id, @custom_items, :id, :name %><br>
+          <% else %>
+            <p>自分のテンプレートはまだありません。</p>
+          <% end %>
 
-  <%= f.submit "登録" %>
-<% end %>
+          <%= f.submit "登録" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 自分のテンプレートを作成 -->
-<h2><strong>自分のテンプレートを追加する</strong></h2>
-<%= form_with model: @care_item, url: care_items_path, method: :post do |f| %>
-  <%= f.label :name, "名前" %>
-  <%= f.text_field :name %><br>
+<section class="mb-5">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-10">
+        <h4>自分のテンプレートを追加する</h4>
+        <%= form_with model: @care_item, url: care_items_path, method: :post do |f| %>
+          <%= f.hidden_field :default_item, :value => false %>
 
-  <%= f.label :unit, "単位" %>
-  <%= f.text_field :unit %><br>
+          <div class="field">
+            <%= f.label :name, "名前" %><br>
+            <%= f.text_field :name %>
+          </div>
 
-  <%= f.hidden_field :default_item, :value => false %>
+          <div class="field">
+            <%= f.label :unit, "単位" %><br>
+            <%= f.text_field :unit %>
+          </div>
 
-  <%= f.submit "保存" %>
-<% end %>
+          <div class="actions mt-3">
+            <%= f.submit "保存" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 自分のテンプレートを編集、削除-->
-<div>
-  <h2>自分のテンプレート一覧</h2>
-  <table>
-    <tr>
-      <th>項目名</th>
-      <th>単位</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <% @custom_items.each do |custom_item| %>
-      <td><%= custom_item.name %></td>
-      <td><%= custom_item.unit %></td>
-      <td><%= link_to "編集", edit_care_item_path(custom_item.id) %></td>
-      <td><%= link_to "削除", care_item_path(custom_item.id), method: :delete, "data-confirm" => "自分のテンプレートは、全てのペットと共通です。\n他のペットで記録している項目の場合、テンプレートを削除すると記録が消えてしまう場合があります。\n本当に削除しますか？" %></td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+<section class="mb-5">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-10">
+        <h4>自分のテンプレート一覧</h4>
+        <table class="table">
+          <tr>
+            <th>項目名</th>
+            <th>単位</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @custom_items.each do |custom_item| %>
+            <td><%= custom_item.name %></td>
+            <td><%= custom_item.unit %></td>
+            <td><%= link_to "編集", edit_care_item_path(custom_item.id), class: "btn text-white btn-simple" %></td>
+            <td><%= link_to "削除", care_item_path(custom_item.id), method: :delete, "data-confirm" => "自分のテンプレートは、全てのペットと共通です。\n他のペットで記録している項目の場合、テンプレートを削除すると記録が消えてしまう場合があります。\n本当に削除しますか？", class: 'btn text-white btn-attention' %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
