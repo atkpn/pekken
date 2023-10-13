@@ -1,14 +1,28 @@
-<h1><%= @pet.name %>の体重・身長修正画面</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-8">
+      <h2><%= @pet.name %>の体重・全長修正</h2>
 
-<%= form_with model: @body_info, url: pet_body_info_path, method: :patch do |f| %>
-  <%= f.label :length, "全長" %>
-  <%= f.number_field :length, step: "0.01" %> cm<br>
+      <%= form_with model: @body_info, url: pet_body_info_path, method: :patch do |f| %>
+        <div class="field">
+          <%= f.label :length, "全長" %><br>
+          <%= f.number_field :length, step: "0.01" %> cm
+        </div>
 
-  <%= f.label :weight, "体重" %>
-  <%= f.number_field :weight, step: "0.01" %> kg<br>
+        <div class="field">
+          <%= f.label :weight, "体重" %><br>
+          <%= f.number_field :weight, step: "0.01" %> kg
+        </div>
 
-  <%= f.label :memo, "メモ" %>
-  <%= f.text_area :memo %><br>
+        <div class="field">
+          <%= f.label :memo, "メモ" %><br>
+          <%= f.text_area :memo %>
+        </div>
 
-  <%= f.submit "保存" %>
-<% end %>
+        <div class="actions mt-3">
+          <%= f.submit "変更を保存" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

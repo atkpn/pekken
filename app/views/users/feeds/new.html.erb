@@ -1,20 +1,36 @@
-<h1>えさ登録画面</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-8">
+      <h2>えさ登録</h2>
 
-<%= form_with model: @feed, url: feeds_path, method: :post do |f| %>
-  <%= f.label :feed_name, "名前" %>
-  <%= f.text_field :feed_name %><br>
+      <%= form_with model: @feed, url: feeds_path, method: :post do |f| %>
+        <div class="field">
+          <%= f.label :feed_name, "名前" %><br>
+          <%= f.text_field :feed_name %>
+        </div>
 
-  <%= f.label :maker, "メーカー" %>
-  <%= f.text_field :maker %><br>
+        <div class="field">
+          <%= f.label :maker, "メーカー" %><br>
+          <%= f.text_field :maker %>
+        </div>
 
-  <%= f.label :classification, "区分" %>
-  <%= f.radio_button :classification, Feed.classifications.key(0) %>
-  <%= f.label :classification_meal, Feed.classifications_i18n[:meal] %><br>
-  <%= f.radio_button :classification, Feed.classifications.key(1) %>
-  <%= f.label :classification_snack, Feed.classifications_i18n[:snack] %><br>
+        <div class="field">
+          <%= f.label :classification, "区分" %><br>
+          <%= f.radio_button :classification, Feed.classifications.key(0) %>
+          <%= f.label :classification_meal, Feed.classifications_i18n[:meal] %>
+          <%= f.radio_button :classification, Feed.classifications.key(1) %>
+          <%= f.label :classification_snack, Feed.classifications_i18n[:snack] %>
+        </div>
 
-  <p>グラムあたりのカロリー</p>
-  <%= f.number_field :amount %> g あたり <%= f.number_field :calorie, step: "0.1" %> kcal<br>
+        <div class="field">
+        <label>グラムあたりのカロリー</label><br>
+          <%= f.number_field :amount %> g あたり <%= f.number_field :calorie, step: "0.1" %> kcal
+        </div>
 
-  <%= f.submit "保存" %>
-<% end %>
+        <div class="actions mt-3">
+          <%= f.submit "保存" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

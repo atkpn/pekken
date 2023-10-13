@@ -1,20 +1,42 @@
-<h1>通知一覧</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-8">
+      <div class="page_title">
+        <h2>通知一覧</h2>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "通知を追加する", new_notification_path %>
+<div class="container mb-4">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-8">
+      <%= link_to "+ 通知を追加", new_notification_path, class: "btn" %>
+    </div>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>通知日時</th>
-    <th>通知内容</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @notifications.each do |notification| %>
-  <tr>
-    <td><%= notification.due_date.strftime('%Y/%m/%d %-H:%M') %></td>
-    <td><%= notification.task %></td>
-    <td><%= link_to "編集", edit_notification_path(notification.id) %></td>
-    <td><%= link_to "削除", notification_path(notification.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-  </tr>
-  <% end %>
-</table>
+<section class="mb-4">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-8">
+        <table class="table">
+          <tr>
+            <th>通知日時</th>
+            <th>通知内容</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @notifications.each do |notification| %>
+          <tr>
+            <td><%= notification.due_date.strftime('%Y/%m/%d %-H:%M') %></td>
+            <td><%= notification.task %></td>
+            <td><%= link_to "編集", edit_notification_path(notification.id), class: "btn text-white btn-simple" %></td>
+            <td><%= link_to "削除", notification_path(notification.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn text-white btn-attention' %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

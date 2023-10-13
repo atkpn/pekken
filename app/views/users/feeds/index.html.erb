@@ -1,48 +1,77 @@
-<h1>えさ一覧</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-8">
+      <div class="page_title">
+        <h2>えさ一覧</h2>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "登録する", new_feed_path %>
+<div class="container mb-4">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-8">
+      <%= link_to "+ 登録する", new_feed_path, class: "btn" %>
+    </div>
+  </div>
+</div>
 
-<h2>ごはん</h2>
-  <table>
-    <tr>
-      <th>名前</th>
-      <th>メーカー</th>
-      <th>kcal / g</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <% @feeds.each do |feed| %>
-      <% if feed.classification == 'meal' %>
-        <tr>
-          <td><%= feed.feed_name %></td>
-          <td><%= feed.maker %></td>
-          <td><%= feed.calorie %> kcal/ <%= feed.amount %> g</td>
-          <td><%= link_to "編集", edit_feed_path(feed.id) %></td>
-          <td><%= link_to "削除", feed_path(feed.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </table>
+<section class="mb-4">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-8">
+        <h3>ごはん</h3>
+        <table class="table table-borderless table-sm">
+          <tr>
+            <th>名前</th>
+            <th>メーカー</th>
+            <th>kcal / g</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @feeds.each do |feed| %>
+            <% if feed.classification == 'meal' %>
+              <tr>
+                <td><%= feed.feed_name %></td>
+                <td><%= feed.maker %></td>
+                <td><%= feed.calorie %> kcal/ <%= feed.amount %> g</td>
+                <td><%= link_to "編集", edit_feed_path(feed.id), class: "btn text-white btn-simple" %></td>
+                <td><%= link_to "削除", feed_path(feed.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn text-white btn-attention' %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>おやつ</h2>
-<table>
-    <tr>
-      <th>名前</th>
-      <th>メーカー</th>
-      <th>kcal / g</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <% @feeds.each do |feed| %>
-      <% if feed.classification == 'snack' %>
-        <tr>
-          <td><%= feed.feed_name %></td>
-          <td><%= feed.maker %></td>
-          <td><%= feed.calorie %> kcal/ <%= feed.amount %> g</td>
-          <td><%= link_to "編集", edit_feed_path(feed.id) %></td>
-          <td><%= link_to "削除", feed_path(feed.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </table>
-
+<section class="mb-4">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-8">
+        <h2>おやつ</h2>
+        <table class="table table-borderless table-sm">
+          <tr>
+            <th>名前</th>
+            <th>メーカー</th>
+            <th>kcal / g</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @feeds.each do |feed| %>
+            <% if feed.classification == 'snack' %>
+              <tr>
+                <td><%= feed.feed_name %></td>
+                <td><%= feed.maker %></td>
+                <td><%= feed.calorie %> kcal/ <%= feed.amount %> g</td>
+                <td><%= link_to "編集", edit_feed_path(feed.id), class: "btn text-white btn-simple" %></td>
+                <td><%= link_to "削除", feed_path(feed.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn text-white btn-attention' %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

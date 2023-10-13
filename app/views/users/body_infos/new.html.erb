@@ -1,40 +1,69 @@
-<h1><%= @pet.name %>の体重・身長登録画面</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-10">
+      <div class="page_title">
+        <h2><%= @pet.name %>の体重・全長</h2>
+      </div>
 
-<%= form_with model: @body_info, url: pet_body_infos_path, method: :post do |f| %>
-  <%= f.label :length, "全長" %>
-  <%= f.number_field :length, step: "0.01" %> cm<br>
+      <!-- 体重・全長の記録フォーム -->
+      <div class="body_info_form mb-5">
+        <h3>記録を残す</h3>
+        <%= form_with model: @body_info, url: pet_body_infos_path, method: :post do |f| %>
+          <div class="field">
+            <%= f.label :length, "全長" %><br>
+            <%= f.number_field :length, step: "0.01" %> cm
+          </div>
 
-  <%= f.label :weight, "体重" %>
-  <%= f.number_field :weight, step: "0.01" %> kg<br>
+          <div class="field">
+            <%= f.label :weight, "体重" %><br>
+            <%= f.number_field :weight, step: "0.01" %> kg
+          </div>
 
-  <%= f.label :memo, "メモ" %>
-  <%= f.text_area :memo %><br>
+          <div class="field">
+            <%= f.label :memo, "メモ" %><br>
+            <%= f.text_area :memo %>
+          </div>
 
-  <%= f.submit "保存" %>
-<% end %>
+          <div class="actions mt-3">
+            <%= f.submit "保存" %>
+          </div>
+        <% end %>
+      </div>
 
-<h2>体重・全長の一覧</h2>
-<table>
-  <tr>
-    <th>日付</th>
-    <th>体重(kg)</th>
-    <th>全長(cm)</th>
-    <th>メモ</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @body_info_all.each do |body_info_all| %>
-  <tr>
-    <td><%= l body_info_all.updated_at, format: :long %></td>
-    <td><%= body_info_all.weight %></td>
-    <td><%= body_info_all.length %></td>
-    <td><%= body_info_all.memo %></td>
-    <td><%= link_to "修正", edit_pet_body_info_path(@pet, body_info_all) %></td>
-    <td><%= link_to "削除", pet_body_info_path(@pet, body_info_all), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-  </tr>
-  <% end %>
-</table>
+      <!-- 体重・全長の一覧 -->
+      <div class="body_info_all mb-5">
+        <h3>体重・全長の一覧</h3>
+        <table class="table table-sm">
+          <tr>
+            <th>日付</th>
+            <th>体重(kg)</th>
+            <th>全長(cm)</th>
+            <th>メモ</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% @body_info_all.each do |body_info_all| %>
+          <tr>
+            <td><%= l body_info_all.updated_at, format: :long %></td>
+            <td><%= body_info_all.weight %></td>
+            <td><%= body_info_all.length %></td>
+            <td><%= body_info_all.memo %></td>
+            <td><%= link_to "修正", edit_pet_body_info_path(@pet, body_info_all), class: "btn text-white btn-simple" %></td>
+            <td><%= link_to "削除", pet_body_info_path(@pet, body_info_all), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn text-white btn-attention' %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="btn-pet-show">
+        <%= link_to pet_path(@pet.id), class: 'btn btn-custom2' do %>
+          <%= @pet.name %>の詳細画面に戻る
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to pet_path(@pet.id) do %>
-  <%= @pet.name %>の詳細画面に戻る
-<% end %>
+
+
+
+
