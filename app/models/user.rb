@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   # LINEログイン
   def social_profile(provider)
     social_profiles.select { |sp| sp.provider == provider.to_s }.first
@@ -43,5 +43,6 @@ class User < ApplicationRecord
   has_many :pets, dependent: :destroy
   has_many :care_items, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :feeds, dependent: :destroy
 
 end

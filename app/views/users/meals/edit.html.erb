@@ -2,6 +2,18 @@
   <div class="row align-items-center justify-content-between">
     <div class="col-md-8">
       <h2><%= @pet.name %>の食事修正</h2>
+
+      <div>
+        <% if @meal.errors.any? %>
+          <%= @meal.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @meal.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
       <%= form_with model: @meal, url: pet_meal_path, method: :patch do |f| %>
         <div class="field">
           <%= f.label :datetime, "日時" %><br>

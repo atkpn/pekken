@@ -3,7 +3,7 @@ class Users::MealsController < ApplicationController
 
   def new
     @meal = Meal.new
-    @feeds = Feed.all
+    @feeds = Feed.where(user_id: current_user.id)
   end
 
   def create
@@ -12,6 +12,7 @@ class Users::MealsController < ApplicationController
     if @meal.save
       redirect_to pet_meals_path
     else
+      @feeds = Feed.where(user_id: current_user.id)
       render :new
     end
   end
@@ -27,13 +28,17 @@ class Users::MealsController < ApplicationController
 
   def edit
     @meal = Meal.find(params[:id])
-    @feeds = Feed.all
+    @feeds = Feed.where(user_id: current_user.id)
   end
 
   def update
-    meal = Meal.find(params[:id])
-    meal.update(meal_params)
-    redirect_to pet_meal_path(@pet, meal.datetime)
+    @meal = Meal.find(params[:id])
+    if @meal.update(meal_params)
+      redirect_to pet_meal_path(@pet, @meal.datetime)
+    else
+      @feeds = Feed.where(user_id: current_user.id)
+      render :edit
+    end
   end
 
   def destroy

@@ -15,8 +15,8 @@
         <% end %>
       </div>
 
-      <!-- ユーザーのLINE連携が完了している場合は、フォームを表示 -->
-      <% if current_user.uid.present? %>
+      <!-- ゲストユーザーではなく、ユーザーのLINE連携が完了している場合は、フォームを表示 -->
+      <% if current_user.email != "guest@example.com" && current_user.uid.present? %>
         <%= form_with model: @notification, url: notifications_path, method: :post do |f| %>
           <div class="field">
             <%= f.label :due_date, "通知したい日時" %><br>
@@ -32,9 +32,11 @@
             <%= f.submit "保存" %>
           </div>
         <% end %>
-      <!-- LINE連携が完了していない場合は、連携用リンクを表示 -->
-      <% else %>
+      <!-- ゲストユーザーではなく、LINE連携が完了していない場合は、連携用リンクを表示 -->
+      <% elsif current_user.email != "guest@example.com" && current_user.uid.blank? %>
         <p>通知機能を使用する場合は、先に<%= link_to "LINEアカウントを連携", user_line_omniauth_authorize_path, method: :post %>する必要があります。</p>
+      <% elsif current_user.email == "guest@example.com" %>
+        <p>ゲストユーザーはLINE連携ができないので、通知の機能は使用できません。</p>
       <% end %>
     </div>
   </div>

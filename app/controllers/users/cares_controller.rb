@@ -2,10 +2,9 @@ class Users::CaresController < ApplicationController
   before_action :set_pet
 
   def new
-    # binding.pry
     @care = Care.new
     @default_items = CareItem.where(default_item: true)
-    @custom_items = CareItem.where(default_item: false)
+    @custom_items = CareItem.where(default_item: false, user_id: current_user.id)
 
     @care_item = CareItem.new
   end
@@ -23,7 +22,8 @@ class Users::CaresController < ApplicationController
   end
 
   def index
-    @care = Care.all
+    @care = Care.where(pet: @pet)
+
   end
 
   def destroy

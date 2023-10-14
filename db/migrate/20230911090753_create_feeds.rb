@@ -6,6 +6,7 @@ class CreateFeeds < ActiveRecord::Migration[6.1]
       t.integer :classification, null: false
       t.integer :amount
       t.float :calorie
+      t.integer :user_id, null: false
 
       t.timestamps
     end

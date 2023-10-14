@@ -22,6 +22,9 @@ ja:
       notification:
         due_date: "通知したい日時"
         task: "通知内容"
+      feed:
+        feed_name: "名前"
+        classification: "区分"
   date:
     abbr_day_names:
     - 日

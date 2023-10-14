@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2023_10_08_003508) do
     t.integer "classification", null: false
     t.integer "amount"
     t.float "calorie"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
