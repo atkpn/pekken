@@ -7,10 +7,13 @@ class Users::MealsController < ApplicationController
   end
 
   def create
-    meal = Meal.new(meal_params)
-    meal.pet = @pet
-    meal.save
-    redirect_to pet_meals_path
+    @meal = Meal.new(meal_params)
+    @meal.pet = @pet
+    if @meal.save
+      redirect_to pet_meals_path
+    else
+      render :new
+    end
   end
 
   def index

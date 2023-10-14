@@ -5,7 +5,7 @@
       <%= form_with model: @meal, url: pet_meal_path, method: :patch do |f| %>
         <div class="field">
           <%= f.label :datetime, "日時" %><br>
-          <%= f.datetime_field :datetime %>
+          <%= f.datetime_select :datetime %>
         </div>
 
         <div class="field">

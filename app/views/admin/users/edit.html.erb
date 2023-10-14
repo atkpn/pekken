@@ -1,18 +1,31 @@
-<h1><%= @user.name %> さんの編集画面</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-10">
+      <h2><%= @user.name %> さんの編集画面</h2>
+      <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+        <div class="field">
+          <%= f.label:name, "ユーザー名" %><br>
+          <%= f.text_field :name %>
+        </div>
 
-<%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
-  <%= f.label:name, "ユーザー名" %>
-  <%= f.text_field :name %><br>
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %><br>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
 
-  <%= f.label :email, "メールアドレス" %>
-  <%= f.email_field :email, autofocus: true, autocomplete: "email" %><br>
+        <div class="field">
+          <%= f.label:is_deleted, "ステータス" %><br>
+          <%= f.radio_button :is_deleted, 'false' %>
+          <%= f.label :is_deleted_false, "有効" %>
 
-  <%= f.label:is_deleted, "ステータス" %>
-  <%= f.radio_button :is_deleted, 'false' %>
-  <%= f.label :is_deleted_false, "有効" %>
+          <%= f.radio_button :is_deleted, 'true' %>
+          <%= f.label :is_deleted_true, "退会" %>
+        </div>
 
-  <%= f.radio_button :is_deleted, 'true' %>
-  <%= f.label :is_deleted_true, "退会" %><br>
-
-  <%= f.submit "変更を保存" %>
-<% end %>
+        <div class="actions">
+          <%= f.submit "変更を保存" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

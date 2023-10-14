@@ -9,7 +9,7 @@
           <%= f.hidden_field :default_item, :value => false %>
 
           <div class="field">
-            <%= f.label :name, "項目名" %><br>
+            <%= f.label :name, "項目名" %> ※必須<br>
             <%= f.text_field :name %>
           </div>
 
@@ -19,7 +19,7 @@
           </div>
 
           <div class="actions mt-3">
-            <%= f.submit "保存" %>
+            <%= f.submit "変更を保存" %>
           </div>
         <% end %>
 

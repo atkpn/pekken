@@ -3,29 +3,40 @@
     <div class="col-md-8">
       <h2><%= @pet.name %>の食事登録</h2>
 
-      <%= form_with model: @meal, url: pet_meals_path, method: :post do |f| %>
-        <% if @feeds.present? %>
-        <div class="field">
-          <%= f.label :datetime, "日時" %><br>
-          <%= f.datetime_field :datetime %>
-        </div>
-
-        <div class="field">
-          <%= f.label :feed_id, "えさの選択" %><br>
-          <%= f.select :feed_id, options_from_collection_for_select(@feeds, :id, :feed_name) %>
-        </div>
-
-        <div class="field">
-          <%= f.label :amount_eaten, "食べた量" %><br>
-          <%= f.number_field :amount_eaten, step: "0.1" %> g
-        </div>
-
-        <div class="actions mt-3">
-          <%= f.submit "保存" %>
-        </div>
-        <% else %>
-          <p>先に<%= link_to "えさの登録", new_feed_path %>をしてください</p>
+      <div>
+        <% if @meal.errors.any? %>
+          <%= @meal.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @meal.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         <% end %>
+      </div>
+
+      <% if @feeds.present? %>
+        <%= form_with model: @meal, url: pet_meals_path, method: :post do |f| %>
+          <div class="field">
+            <%= f.label :datetime, "日時" %><br>
+            <%= f.datetime_select :datetime %>
+          </div>
+
+          <div class="field">
+            <%= f.label :feed_id, "えさの選択" %><br>
+            <%= f.select :feed_id, options_from_collection_for_select(@feeds, :id, :feed_name) %>
+          </div>
+
+          <div class="field">
+            <%= f.label :amount_eaten, "食べた量" %><br>
+            <%= f.number_field :amount_eaten, step: "0.1" %> g
+          </div>
+
+          <div class="actions mt-3">
+            <%= f.submit "保存" %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>先に<%= link_to "えさの登録", new_feed_path %>をしてください</p>
       <% end %>
     </div>
   </div>

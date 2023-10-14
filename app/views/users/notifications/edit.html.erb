@@ -3,6 +3,18 @@
     <div class="col-md-8">
       <h2>通知編集</h2>
 
+      <!-- バリデーションエラー -->
+      <div class="errors">
+        <% if @notification.errors.any? %>
+          <%= @notification.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @notification.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
       <%= form_with model: @notification, url: notification_path, method: :patch do |f| %>
         <div class="field">
           <%= f.label :due_date, "通知したい日時" %><br>

@@ -1,31 +1,36 @@
-<h1><%= @user.name %> さんの詳細情報</h1>
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-10">
+      <h2><%= @user.name %> さんの詳細情報</h2>
+      <table class="table table-borderless">
+        <tr>
+          <td>ユーザーID</td>
+          <td><%= @user.id %></td>
+        </tr>
 
-<table>
-  <tr>
-    <td>ユーザーID</td>
-    <td><%= @user.id %></td>
-  </tr>
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= @user.name %></td>
+        </tr>
 
-  <tr>
-    <td>ユーザー名</td>
-    <td><%= @user.name %></td>
-  </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
 
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @user.email %></td>
-  </tr>
+        <tr>
+          <td>ステータス</td>
+          <td>
+            <% if @user.is_deleted == false %>
+              <p class="text-success">有効</p>
+            <% else %>
+              <p class="text-muted">退会</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
 
-  <tr>
-    <td>ステータス</td>
-    <td>
-      <% if @user.is_deleted == false %>
-        <p class="text-success">有効</p>
-      <% else %>
-        <p class="text-muted">退会</p>
-      <% end %>
-    </td>
-  </tr>
-</table>
-
-<%= link_to "編集する", edit_admin_user_path(@user.id) %>
+      <%= link_to "編集する", edit_admin_user_path(@user.id), class: 'btn btn-custom2' %>
+    </div>
+  </div>
+</div>

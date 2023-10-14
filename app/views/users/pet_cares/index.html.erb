@@ -45,6 +45,11 @@
           <% end %>
         </table>
       </div>
+      <div>
+        <%= link_to pet_cares_path(@pet), class: 'btn btn-custom2 mr-3' do %>
+          <%= @pet.name %>のお手入れ項目一覧に戻る
+        <% end %>
+      </div>
     </div>
   </div>
 </section>

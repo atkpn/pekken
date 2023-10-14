@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row align-items-center justify-content-between">
-    <div class="col-md-10">
+    <div class="col-md-10 mb-5">
       <h2><%= @pet.name %>の食事記録の詳細</h2>
       <table class="table">
         <tr>
@@ -22,10 +22,13 @@
             <% end %>
           </td>
           <td><%= link_to "編集", edit_pet_meal_path(meal.pet, meal.id), class: "btn text-white btn-simple" %></td>
-          <td><%= link_to "削除", pet_meal_path(meal.pet, meal.id), method: :delete, class: 'btn text-white btn-attention' %></td>
+          <td><%= link_to "削除", pet_meal_path(meal.pet, meal.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn text-white btn-attention' %></td>
         </tr>
         <% end %>
       </table>
+    </div>
+    <div>
+      <%= link_to "食事管理一覧に戻る", pet_meals_path(@pet), class: 'btn btn-custom2' %>
     </div>
   </div>
 </div>

@@ -8,7 +8,7 @@
 
 Admin.destroy_all
 Admin.create!(
-  email: "krni.ot.112@gmail.com",
+  email: "admin@example.com",
   password: "admin_pekken"
 )
 

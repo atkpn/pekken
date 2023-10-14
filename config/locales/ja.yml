@@ -16,6 +16,12 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      meal:
+        amount_eaten: "食べた量"
+      notification:
+        due_date: "通知したい日時"
+        task: "通知内容"
   date:
     abbr_day_names:
     - 日

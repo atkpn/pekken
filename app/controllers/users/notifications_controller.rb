@@ -27,9 +27,12 @@ class Users::NotificationsController < ApplicationController
   end
 
   def update
-    notification = Notification.find(params[:id])
-    notification.update(notification_params)
-    redirect_to notifications_path
+    @notification = Notification.find(params[:id])
+    if @notification.update(notification_params)
+      redirect_to notifications_path
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -5,7 +5,7 @@
 
       <%= form_with model: @feed, url: feeds_path, method: :post do |f| %>
         <div class="field">
-          <%= f.label :feed_name, "名前" %><br>
+          <%= f.label :feed_name, "名前" %> ※必須<br>
           <%= f.text_field :feed_name %>
         </div>
 
@@ -15,7 +15,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :classification, "区分" %><br>
+          <%= f.label :classification, "区分" %> ※必須<br>
           <%= f.radio_button :classification, Feed.classifications.key(0) %>
           <%= f.label :classification_meal, Feed.classifications_i18n[:meal] %>
           <%= f.radio_button :classification, Feed.classifications.key(1) %>

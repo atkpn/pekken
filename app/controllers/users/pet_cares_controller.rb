@@ -13,7 +13,7 @@ class Users::PetCaresController < ApplicationController
   end
 
   def index
-    @pet_care = PetCare.where(pet_id: @pet.id, care_id: @care.id)
+    @pet_care = PetCare.where(pet_id: @pet.id, care_id: @care.id).order(date_time: :desc)
   end
 
   def edit
