@@ -9,7 +9,7 @@
 Admin.destroy_all
 Admin.create!(
   email: "admin@example.com",
-  password: "admin_pekken"
+  password: "password"
 )
 
 CareItem.destroy_all
