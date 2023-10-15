@@ -8,8 +8,8 @@
 
 Admin.destroy_all
 Admin.create!(
-  email: "admin@example.com",
-  password: "password"
+  email: ENV['ADMIN_EMAIL'],
+  password: ENV['ADMIN_PASSWORD']
 )
 
 CareItem.destroy_all
