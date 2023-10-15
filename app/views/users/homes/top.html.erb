@@ -33,8 +33,7 @@
     <div class="row align-items-center justify-content-between mb-3">
       <div class="col-md-6">
         <div class="about_img">
-          <img src="../../assets/top_image1.jpeg" alt="アプリの一部機能の紹介" width=300 >
-          <%#= image_tag "assets/top_image1.jpeg", alt: "sample" %>
+          <%= image_tag asset_path('top_image1.jpeg'),alt: "アプリの一部機能の紹介", width: '300px' %>
         </div>
       </div>
       <div class="col-md-5">
@@ -51,7 +50,7 @@
     <div class="row align-items-center justify-content-between">
       <div class="col-md-6">
         <div class="about_img">
-          <img src="../../assets/top_image2.jpeg" alt="通知機能の紹介" width=300>
+          <%= image_tag asset_path('top_image2.jpeg'),alt: "通知機能の紹介", width: '300px' %>
         </div>
       </div>
       <div class="col-md-5">
