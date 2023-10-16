@@ -28,8 +28,8 @@
           <% @meals.each do |meal| %>
           <tr>
             <td>
-              <%= link_to pet_meal_path(pet_id: @pet.id,id: 20231015) do %>
-                <%= meal.datetime %>
+              <%= link_to pet_meal_path(pet_id: @pet.id, id: meal.datetime) do %>
+                <%= meal.datetime.strftime('%Y/%m/%d') %>
               <% end %>
             </td>
             <td>
