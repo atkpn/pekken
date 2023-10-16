@@ -26,12 +26,12 @@
             <th>総摂取カロリー(kcal)</th>
           </tr>
           <% @meals.each do |meal| %>
+          <div>meal.inspect</div>
           <tr>
             <td>
-              <%= link_to pet_meal_path(@pet, meal.datetime) do %>
-                <!--<%#= meal.datetime.strftime('%Y/%m/%d') %> -->
-                <%= meal.datetime %>
-              <% end %>
+              <%#= link_to pet_meal_path(@pet.id, meal.datetime) do %>
+                <%#= meal.datetime.strftime('%Y/%m/%d') %>
+              <%# end %>
             </td>
             <td>
               <%= meal.calorie %>kcal
