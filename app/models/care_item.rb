@@ -1,4 +1,7 @@
 class CareItem < ApplicationRecord
+  # バリデーション
+  validates :name, presence: true
+
   # アソシエーション
   has_many :cares, dependent: :destroy
   has_many :pets, through: :cares

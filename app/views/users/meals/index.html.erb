@@ -29,7 +29,8 @@
           <tr>
             <td>
               <%= link_to pet_meal_path(@pet, meal.datetime) do %>
-                <%= meal.datetime.strftime('%Y/%m/%d') %>
+                <!--<%#= meal.datetime.strftime('%Y/%m/%d') %> -->
+                <%= l meal.datetime, format: :day %>
               <% end %>
             </td>
             <td>
