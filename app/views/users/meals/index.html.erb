@@ -28,7 +28,9 @@
           <% @meals.each do |meal| %>
           <tr>
             <td>
-
+              <%= link_to pet_meal_path(pet_id: @pet.id,id: meal.datetime) do %>
+                <%= meal.datetime.strftime('%Y/%m/%d') %>
+              <% end %>
             </td>
             <td>
               <%= meal.calorie %>kcal
