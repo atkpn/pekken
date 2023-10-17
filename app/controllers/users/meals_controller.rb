@@ -19,9 +19,12 @@ class Users::MealsController < ApplicationController
 
   def index
     # 開発環境
-    #@meals = Meal.joins(:feed).where(pet: @pet).select("date(meals.datetime) as datetime, sum((meals.amount_eaten * feeds.calorie)/feeds.amount) as calorie").group("date(meals.datetime)").order(datetime: :desc)
+    if Rails.env.development?
+      @meals = Meal.joins(:feed).where(pet: @pet).select("date(meals.datetime) as datetime, sum((meals.amount_eaten * feeds.calorie)/feeds.amount) as calorie").group("date(meals.datetime)").order(datetime: :desc)
     # 本番環境
-    @meals = Meal.joins(:feed).where(pet: @pet).select("DATE_FORMAT(meals.datetime,'%Y/%m/%d') as datetime, sum((meals.amount_eaten * feeds.calorie)/feeds.amount) as calorie").group("DATE_FORMAT(meals.datetime,'%Y/%m/%d')").order(datetime: :desc)
+    else
+      @meals = Meal.joins(:feed).where(pet: @pet).select("DATE_FORMAT(meals.datetime,'%Y/%m/%d') as datetime, sum((meals.amount_eaten * feeds.calorie)/feeds.amount) as calorie").group("DATE_FORMAT(meals.datetime,'%Y/%m/%d')").order(datetime: :desc)
+    end
   end
 
   def show
