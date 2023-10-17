@@ -25,6 +25,8 @@ ja:
       feed:
         feed_name: "名前"
         classification: "区分"
+      care_item:
+        name: "項目名"
   date:
     abbr_day_names:
     - 日

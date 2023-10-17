@@ -53,11 +53,11 @@
           <% end %>
         </div>
 
-        <%= form_with model: @care_item, url: care_items_path, method: :post do |f| %>
+        <%= form_with model: @care_item, url: care_items_path(pet_id: @pet), method: :post do |f| %>
           <%= f.hidden_field :default_item, :value => false %>
 
           <div class="field">
-            <%= f.label :name, "名前" %> ※必須<br>
+            <%= f.label :name, "項目名" %> ※必須<br>
             <%= f.text_field :name %>
           </div>
 
