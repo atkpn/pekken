@@ -50,7 +50,11 @@
       <% @pets.each do |pet| %>
         <div class="card w-25 mt-4 shadow-sm">
           <%= link_to pet_path(pet.id) do %>
-            <%= image_tag pet.pet_image, class: "card-img-top card-img" %>
+            <% if pet.pet_image.attached? %>
+              <%= image_tag pet.pet_image, class: "card-img-top card-img" %>
+            <% else %>
+              <%= image_tag 'no_image_square.jpg', class: "card-img-top card-img" %>
+            <% end %>
           <% end %>
           <div class="card-body">
             <div class="row">
