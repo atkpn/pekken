@@ -22,7 +22,7 @@
 - ペットに関する費用を管理するとき
 ​
 ## 設計書
-後ほど作成予定
+- ER図(https://drive.google.com/file/d/1HsxNikyl9-ga75bIeIqQ3DZklBXFc1qq/view?usp=sharing)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -32,4 +32,7 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-- 現在は未定
+- フリー写真素材として以下を使用
+  - PhotoAC(https://www.photo-ac.com/main/detail/27125068&title=%E7%AE%B1%E5%85%A5%E3%82%8A%E7%8C%AB%E3%80%80%E8%8C%B6%E3%83%88%E3%83%A9)
+  - PhotoAC(https://www.photo-ac.com/main/detail/27349516#goog_rewarded)
+  - pngtree(https://ja.pngtree.com/freepng/torn-paper-effect_8921033.html)

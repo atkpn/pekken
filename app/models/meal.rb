@@ -1,4 +1,5 @@
 class Meal < ApplicationRecord
+  # アソシエーション
   belongs_to :pet
   belongs_to :feed
 
