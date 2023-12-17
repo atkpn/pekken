@@ -1,4 +1,5 @@
 class Users::FeedsController < ApplicationController
+  before_action :authorize_feed_access, only: [:edit, :update]
 
   def new
     @feed = Feed.new
@@ -38,6 +39,13 @@ class Users::FeedsController < ApplicationController
 
   def feed_params
     params.require(:feed).permit(:feed_name, :maker, :classification, :amount, :calorie)
+  end
+
+  def authorize_feed_access
+    feed = Feed.find(params[:id])
+    unless current_user == feed.user
+      redirect_to feeds_path, alert: '権限がありません。'
+    end
   end
 
 end

@@ -32,6 +32,106 @@ CareItem.create!(
   ]
 )
 
+# ゲストユーザー
+guest_user = User.guest
+
+# ゲストユーザーのペット
+moka = guest_user.pets.find_or_create_by!(name: "モカ") do |pet|
+  pet.birthday = Date.new(2023, 3, 10)
+  pet.came_day = Date.new(2023, 5, 5)
+  pet.kind = "トイプードル"
+  pet.sex = 0
+  pet.user = guest_user
+  pet.pet_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/toy_poodle.jpg"), filename:"toy_poodle.jpg")
+end
+
+uni = guest_user.pets.find_or_create_by!(name: "うに") do |pet|
+  pet.birthday = Date.new(2023, 10, 10)
+  pet.came_day = Date.new(2023, 11, 2)
+  pet.kind = "ハリネズミ"
+  pet.sex = 1
+  pet.user = guest_user
+  pet.pet_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/hedgehog.jpg"), filename:"hedgehog.jpg")
+end
+
+# ゲストユーザーペットの全長・体重
+moka.body_infos.find_or_create_by!(weight: 0.8, length: 20, memo: "2ヶ月")
+moka.body_infos.find_or_create_by!(weight: 1.2, length: 21, memo: "3ヶ月")
+uni.body_infos.find_or_create_by!(weight: 0.5, length: 15, memo: "")
+
+# ゲストユーザーのえさ
+feed_guest = Feed.find_or_create_by!(feed_name: "犬の餌") do |f|
+  f.maker = "美味しいドッグフードメーカー"
+  f.classification = 0
+  f.amount = 100
+  f.calorie = 360
+  f.user = guest_user
+end
+
+feed_guest_2 = Feed.find_or_create_by!(feed_name: "犬のおやつ") do |f|
+  f.maker = "美味しいドッグフードメーカー"
+  f.classification = 0
+  f.amount = 100
+  f.calorie = 375
+  f.user = guest_user
+end
+
+feed_guest_3 = Feed.find_or_create_by!(feed_name: "ハリネズミフード") do |f|
+  f.maker = "健康的なハリネズミの餌のメーカー"
+  f.classification = 0
+  f.amount = 100
+  f.calorie = 430
+  f.user = guest_user
+end
+
+# ゲストペットの食事
+Meal.find_or_create_by!(amount_eaten: 20, datetime: DateTime.new(2023, 3, 11, 7, 00)) do |meal|
+  meal.pet = moka
+  meal.feed = feed_guest
+end
+
+Meal.find_or_create_by!(amount_eaten: 5, datetime: DateTime.new(2023, 3, 11, 15, 00)) do |meal|
+  meal.pet = moka
+  meal.feed = feed_guest_2
+end
+
+Meal.find_or_create_by!(amount_eaten: 25, datetime: DateTime.new(2023, 11, 2, 19, 00)) do |meal|
+  meal.pet = uni
+  meal.feed = feed_guest_3
+end
+
+# ゲストユーザーのお手入れ項目（自分のテンプレート）
+clinic = CareItem.find_or_create_by!(name: "病院") do |care_item|
+  care_item.default_item = false
+  care_item.user = guest_user
+end
+
+molting_period = CareItem.find_or_create_by!(name: "換毛期") do |care_item|
+  care_item.default_item = false
+  care_item.user = guest_user
+end
+
+# ゲストペットのお手入れ項目
+care_moka_clinic = Care.find_or_create_by!(pet: moka, care_item: clinic)
+care_uni_molting = Care.find_or_create_by!(pet: uni, care_item: molting_period)
+
+# ゲストペットのお手入れ記録
+PetCare.find_or_create_by!(pet_id: moka.id, care: care_moka_clinic) do |pet_care|
+  pet_care.memo = "注射をした"
+  pet_care.date_time = DateTime.new(2023, 3, 15, 11, 00)
+end
+
+PetCare.find_or_create_by!(pet_id: moka.id, care: care_moka_clinic) do |pet_care|
+  pet_care.memo = "経過観察"
+  pet_care.date_time = DateTime.new(2023, 3, 29, 15, 00)
+end
+
+PetCare.find_or_create_by!(pet_id: uni.id, care: care_uni_molting) do |pet_care|
+  pet_care.memo = "10本ほど針が抜けた"
+  pet_care.date_time = DateTime.new(2023, 11, 22, 19, 00)
+end
+
+
 # テストユーザー
 test_tarou = User.find_or_create_by!(email: "test_tarou@example.com") do |user|
   user.name ="テスト太郎"

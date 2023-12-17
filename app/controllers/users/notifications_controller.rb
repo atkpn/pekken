@@ -1,4 +1,6 @@
 class Users::NotificationsController < ApplicationController
+  before_action :authorize_notification_access, only: [:edit, :update]
+
   def new
     @notification = Notification.new
   end
@@ -45,6 +47,13 @@ class Users::NotificationsController < ApplicationController
 
   def notification_params
     params.require(:notification).permit(:user_id, :user_uid, :task, :due_date)
+  end
+
+  def authorize_notification_access
+    notification = Notification.find(params[:id])
+    unless current_user == notification.user
+      redirect_to notifications_path, alert: '権限がありません。'
+    end
   end
 
 end

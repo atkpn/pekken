@@ -3,6 +3,17 @@
     <div class="col-md-6">
       <h2><%= @pet.name %>の編集画面</h2>
 
+      <div>
+        <% if @pet.errors.any? %>
+          <%= @pet.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @pet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
       <%= form_with model: @pet do |f| %>
         <div class="field">
           <%= f.label :pet_image, "画像" %><br>
@@ -10,7 +21,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :name, "名前" %><br>
+          <%= f.label :name, "名前" %> ※必須<br>
           <%= f.text_field :name %>
         </div>
 

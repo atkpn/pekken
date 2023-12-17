@@ -33,6 +33,8 @@
 ​
 ## 使用素材
 - フリー写真素材として以下を使用
+  - PhotoAC(https://www.photo-ac.com/main/detail/22512259&title=%E3%83%8F%E3%83%AA%E3%83%8D%E3%82%BA%E3%83%9F)
+  - PhotoAC(https://www.photo-ac.com/main/detail/27926366#goog_rewarded)
   - PhotoAC(https://www.photo-ac.com/main/detail/27125068&title=%E7%AE%B1%E5%85%A5%E3%82%8A%E7%8C%AB%E3%80%80%E8%8C%B6%E3%83%88%E3%83%A9)
   - PhotoAC(https://www.photo-ac.com/main/detail/27349516#goog_rewarded)
   - pngtree(https://ja.pngtree.com/freepng/torn-paper-effect_8921033.html)

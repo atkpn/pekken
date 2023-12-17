@@ -8,15 +8,27 @@
       <!-- 体重・全長の記録フォーム -->
       <div class="body_info_form mb-5">
         <h3>記録を残す</h3>
+
+        <div>
+          <% if @body_info.errors.any? %>
+            <%= @body_info.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @body_info.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+
         <%= form_with model: @body_info, url: pet_body_infos_path, method: :post do |f| %>
           <div class="field">
-            <%= f.label :length, "全長" %><br>
-            <%= f.number_field :length, step: "0.01" %> cm
+            <%= f.label :weight, "体重" %> ※必須<br>
+            <%= f.number_field :weight, step: "0.01" %> kg
           </div>
 
           <div class="field">
-            <%= f.label :weight, "体重" %><br>
-            <%= f.number_field :weight, step: "0.01" %> kg
+            <%= f.label :length, "全長" %><br>
+            <%= f.number_field :length, step: "0.01" %> cm
           </div>
 
           <div class="field">

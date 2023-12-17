@@ -1,5 +1,6 @@
 class Users::MealsController < ApplicationController
   before_action :set_pet
+  before_action :authorize_pet_access
 
   def new
     @meal = Meal.new
@@ -57,6 +58,13 @@ class Users::MealsController < ApplicationController
 
   def set_pet
     @pet = Pet.find(params[:pet_id])
+  end
+
+  def authorize_pet_access
+    pet = Pet.find(params[:pet_id])
+    unless current_user == pet.user
+      redirect_to root_path, alert: '権限がありません。'
+    end
   end
 
   def meal_params

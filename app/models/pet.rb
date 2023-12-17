@@ -18,5 +18,8 @@ class Pet < ApplicationRecord
   has_many :cares, dependent: :destroy
   has_many :care_items, through: :cares
 
+  # バリデーション
+  validates :name, presence: true
+
 
 end

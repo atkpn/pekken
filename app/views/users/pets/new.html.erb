@@ -1,7 +1,18 @@
 <div class="container">
   <div class="row align-items-center justify-content-between">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <h2>ペット登録画面</h2>
+
+      <div>
+        <% if @pet.errors.any? %>
+          <%= @pet.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @pet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
 
       <%= form_with model: @pet do |f| %>
         <div class="field">
