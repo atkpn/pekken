@@ -19,9 +19,12 @@ class Users::CareItemsController < ApplicationController
   end
 
   def update
-    care_item = CareItem.find(params[:id])
-    care_item.update(care_item_params)
-    redirect_to session[:previous_url] #更新後、特定のペットの項目追加画面にリダイレクト
+    @care_item = CareItem.find(params[:id])
+    if @care_item.update(care_item_params)
+      redirect_to session[:previous_url] #更新後、特定のペットの項目追加画面にリダイレクト
+    else
+      render :edit
+    end
   end
 
   def destroy

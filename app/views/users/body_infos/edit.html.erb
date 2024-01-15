@@ -2,37 +2,13 @@
   <div class="row align-items-center justify-content-between">
     <div class="col-md-8">
       <h2><%= @pet.name %>の体重・全長修正</h2>
-      
+
       <div>
-        <% if @body_info.errors.any? %>
-          <%= @body_info.errors.count %>件のエラーが発生しました
-          <ul>
-            <% @body_info.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
+        <%= render 'error', body_info: @body_info %>
       </div>
 
       <%= form_with model: @body_info, url: pet_body_info_path, method: :patch do |f| %>
-        <div class="field">
-          <%= f.label :weight, "体重" %> ※必須<br>
-          <%= f.number_field :weight, step: "0.01" %> kg
-        </div>
-
-        <div class="field">
-          <%= f.label :length, "全長" %><br>
-          <%= f.number_field :length, step: "0.01" %> cm
-        </div>
-
-        <div class="field">
-          <%= f.label :memo, "メモ" %><br>
-          <%= f.text_area :memo %>
-        </div>
-
-        <div class="actions mt-3">
-          <%= f.submit "変更を保存" %>
-        </div>
+        <%= render 'form', f: f %>
       <% end %>
     </div>
   </div>

@@ -2,6 +2,17 @@
   <div class="row align-items-center justify-content-between">
     <div class="col-md-8">
       <h2>自分のテンプレート編集</h2>
+      <!-- バリデーションエラー -->
+      <div>
+        <% if @care_item.errors.any? %>
+          <%= @care_item.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @care_item.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
 
       <!-- 自分で追加した項目の場合 -->
       <% if @care_item.default_item == false %>

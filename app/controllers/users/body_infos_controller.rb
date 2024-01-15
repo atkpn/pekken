@@ -24,7 +24,7 @@ class Users::BodyInfosController < ApplicationController
 
   def update
     @body_info = BodyInfo.find(params[:id])
-    if body_info.update(body_info_params)
+    if @body_info.update(body_info_params)
       redirect_to new_pet_body_info_path(@pet)
     else
       render :edit

@@ -1,0 +1,8 @@
+<% if body_info.errors.any? %>
+  <%= body_info.errors.count %>件のエラーが発生しました
+  <ul>
+    <% body_info.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
